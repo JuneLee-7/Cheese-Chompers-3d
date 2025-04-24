@@ -24,124 +24,297 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "VideoGame",
-        "name": "Italian Brainrot Clicker",
-        "description": "An addictive clicker game with an Italian cuisine theme. Build your virtual Italian restaurant empire by clicking and upgrading your kitchen equipment.",
-        "genre": ["Clicker Game", "Idle Game", "Simulation"],
-        "gamePlatform": ["Web Browser", "Android App", "iOS App"],
-        "applicationCategory": "Game",
-        "operatingSystem": ["Windows", "macOS", "Android", "iOS"],
-        "publisher": {
-            "@type": "Organization",
-            "name": "Cheese Chompers Studio",
-            "url": "https://cheesechompers.com"
-        },
-        "author": {
-            "@type": "Organization",
-            "name": "Cheese Chompers Studio",
-            "url": "https://cheesechompers.com"
-        },
-        "datePublished": "2025-01-15",
-        "image": {
-            "@type": "ImageObject",
-            "url": "https://cheesechompers.com/games/italian-brainrot-clicker/thumbnail.jpg",
-            "width": 1200,
-            "height": 630
-        },
-        "screenshot": {
-            "@type": "ImageObject",
-            "url": "https://cheesechompers.com/games/italian-brainrot-clicker/screenshot.jpg",
-            "width": 1920,
-            "height": 1080
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "1250",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
-        "review": {
-            "@type": "Review",
-            "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "5",
-                "bestRating": "5",
-                "worstRating": "1"
+        "@graph": [
+            {
+                "@type": ["VideoGame", "SoftwareApplication"],
+                "name": "Italian Brainrot Clicker",
+                "description": "An addictive clicker game with an Italian cuisine theme where crocodiles pilot bombers and sharks wear Nike shoes. Build your virtual Italian restaurant empire by clicking and upgrading your kitchen equipment while experiencing unique characters and random events.",
+                "genre": ["Clicker Game", "Idle Game", "Simulation", "Casual Game"],
+                "gamePlatform": ["Web Browser", "Android App", "iOS App"],
+                "applicationCategory": "Game",
+                "operatingSystem": ["Windows", "macOS", "Android", "iOS"],
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "ClickMaster Studios",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://example.com/imgs/clickmaster-studios-logo.png",
+                        "width": 180,
+                        "height": 60
+                    },
+                    "sameAs": [
+                        "https://twitter.com/clickmasterstudios",
+                        "https://facebook.com/clickmasterstudios",
+                        "https://instagram.com/clickmasterstudios",
+                        "https://github.com/clickmasterstudios"
+                    ],
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+1-555-123-4567",
+                        "contactType": "customer service",
+                        "email": "support@clickmasterstudios.com",
+                        "availableLanguage": ["English", "Italian"]
+                    }
+                },
+                "author": {
+                    "@type": "Organization",
+                    "name": "ClickMaster Studios",
+                    "url": "https://clickmasterstudios.com"
+                },
+                "datePublished": "2025-03-15",
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "https://example.com/imgs/italian-brainrot-clicker-thumb.png",
+                    "width": 1200,
+                    "height": 630
+                },
+                "screenshot": {
+                    "@type": "ImageObject",
+                    "url": "https://example.com/imgs/italian-brainrot-clicker-thumb.png",
+                    "width": 1920,
+                    "height": 1080
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "ratingCount": "1234",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "reviewCount": "850"
+                },
+                "review": [
+                    {
+                        "@type": "Review",
+                        "reviewRating": {
+                            "@type": "Rating",
+                            "ratingValue": "5",
+                            "bestRating": "5",
+                            "worstRating": "1"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Marco P."
+                        },
+                        "datePublished": "2025-03-15",
+                        "reviewBody": "Mamma mia! This game is incredibly addictive. The Italian theme is perfect, and I love how you can upgrade your kitchen equipment. Bellissimo!"
+                    },
+                    {
+                        "@type": "Review",
+                        "reviewRating": {
+                            "@type": "Rating",
+                            "ratingValue": "5",
+                            "bestRating": "5",
+                            "worstRating": "1"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Lucia R."
+                        },
+                        "datePublished": "2025-03-15",
+                        "reviewBody": "The achievement system keeps me coming back for more. Just unlocked the Pizza Pro achievement and it feels great!"
+                    }
+                ],
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "description": "Free to play with optional in-game purchases for faster progression"
+                },
+                "gameItem": [
+                    {
+                        "@type": "Thing",
+                        "name": "Tralalero Tralala",
+                        "description": "Starter companion - a fashion-forward shark with a thing for Nike"
+                    },
+                    {
+                        "@type": "Thing",
+                        "name": "Cappuccino Assassino",
+                        "description": "The ninja barista character"
+                    },
+                    {
+                        "@type": "Thing",
+                        "name": "Bombombini Gussini",
+                        "description": "Unlockable character"
+                    }
+                ],
+                "gameTip": [
+                    "Chain clicks for combo multipliers",
+                    "Time your power-ups for maximum effect",
+                    "Target special events for bonus rewards",
+                    "Complete achievements for permanent boosts",
+                    "Invest in auto-clickers early for passive income",
+                    "Join events for exclusive character unlocks",
+                    "Focus on daily challenges for quick progression",
+                    "Save power-ups for boss encounters"
+                ],
+                "gameMode": [
+                    "Story Mode - Follow the Italian meme saga",
+                    "Speed Run - Race against time challenges",
+                    "Global Events - Compete with players worldwide",
+                    "Custom Challenges - Create your own scenarios"
+                ],
+                "achievement": [
+                    {
+                        "@type": "Thing",
+                        "name": "Pasta Master",
+                        "description": "Cook 1,000 plates of pasta"
+                    },
+                    {
+                        "@type": "Thing",
+                        "name": "Pizza Pro",
+                        "description": "Make 500 perfect pizzas"
+                    },
+                    {
+                        "@type": "Thing",
+                        "name": "Gelato Genius",
+                        "description": "Serve 200 gelato flavors"
+                    }
+                ],
+                "inLanguage": ["en", "it"],
+                "softwareVersion": "1.0.0",
+                "fileSize": "25MB",
+                "permissions": "Internet access",
+                "requirements": {
+                    "@type": "GameServerRequirements",
+                    "operatingSystem": ["Windows 7+", "macOS 10.12+", "Android 7.0+", "iOS 12.0+"],
+                    "processorRequirements": "1.5 GHz or faster processor",
+                    "memoryRequirements": "2 GB RAM",
+                    "storageRequirements": "100 MB available space"
+                }
             },
-            "author": {
-                "@type": "Person",
-                "name": "Marco P."
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://example.com/",
+                            "name": "Home"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://example.com/games",
+                            "name": "Games"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://example.com/games/clicker",
+                            "name": "Clicker Games"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 4,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://example.com/games/italian-brainrot-clicker",
+                            "name": "Italian Brainrot Clicker"
+                        }
+                    }
+                ]
             },
-            "reviewBody": "Mamma mia! This game is incredibly addictive. The Italian theme is perfect, and I love how you can upgrade your kitchen equipment. Bellissimo!"
-        },
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-        }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [{
-            "@type": "Question",
-            "name": "How do I earn achievements in Italian Brainrot Clicker?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Complete specific milestones like reaching certain click counts, upgrading equipment, and unlocking special recipes to earn achievements."
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What makes Italian Brainrot Clicker unique?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Our game combines classic clicking mechanics with Italian meme culture, featuring unique characters, random events, and a progression system that keeps you engaged for hours."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I earn achievements?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Complete specific milestones like reaching click counts, upgrading equipment, unlocking characters, and participating in events. Each achievement provides permanent bonuses!"
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is the game free to play?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes! Italian Brainrot Clicker is completely free to play. Optional cosmetic items and boost packs are available for purchase, but they're not required to enjoy the full game experience."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How often is the game updated?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We release major updates monthly, adding new characters, events, and features. Weekly events and daily challenges keep the content fresh and exciting!"
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "ItemList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "HowTo",
+                            "name": "Basic Controls",
+                            "step": [
+                                {
+                                    "@type": "HowToStep",
+                                    "text": "CLICK - Generate coins and power-ups"
+                                },
+                                {
+                                    "@type": "HowToStep",
+                                    "text": "SPACE - Activate special abilities"
+                                },
+                                {
+                                    "@type": "HowToStep",
+                                    "text": "1-5 - Quick select power-ups"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "HowTo",
+                            "name": "Advanced Techniques",
+                            "step": [
+                                {
+                                    "@type": "HowToStep",
+                                    "text": "Chain clicks for combo multipliers"
+                                },
+                                {
+                                    "@type": "HowToStep",
+                                    "text": "Time your power-ups for maximum effect"
+                                },
+                                {
+                                    "@type": "HowToStep",
+                                    "text": "Target special events for bonus rewards"
+                                },
+                                {
+                                    "@type": "HowToStep",
+                                    "text": "Complete achievements for permanent boosts"
+                                }
+                            ]
+                        }
+                    }
+                ]
             }
-        }, {
-            "@type": "Question",
-            "name": "What are the different types of upgrades available?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "You can upgrade kitchen equipment, hire staff, improve recipes, and unlock new Italian dishes to increase your clicking power and passive income."
-            }
-        }, {
-            "@type": "Question",
-            "name": "Is Italian Brainrot Clicker free to play?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, Italian Brainrot Clicker is completely free to play with optional in-game purchases for faster progression."
-            }
-        }]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "itemListElement": [{
-            "@type": "HowTo",
-            "name": "Basic Controls",
-            "step": [{
-                "@type": "HowToStep",
-                "text": "Click on the kitchen to generate coins"
-            }, {
-                "@type": "HowToStep",
-                "text": "Purchase upgrades to increase coin generation"
-            }, {
-                "@type": "HowToStep",
-                "text": "Unlock achievements to earn bonuses"
-            }]
-        }, {
-            "@type": "HowTo",
-            "name": "Advanced Techniques",
-            "step": [{
-                "@type": "HowToStep",
-                "text": "Time your upgrades for maximum efficiency"
-            }, {
-                "@type": "HowToStep",
-                "text": "Complete achievements for permanent bonuses"
-            }, {
-                "@type": "HowToStep",
-                "text": "Participate in events for special rewards"
-            }]
-        }]
+        ]
     }
     </script>
     <script>
@@ -706,12 +879,12 @@
                         </a>
                         <a href="#" class="text-gray-300 hover:text-accent transition-colors" aria-label="Instagram">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.35.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/>
                             </svg>
                         </a>
                         <a href="#" class="text-gray-300 hover:text-accent transition-colors" aria-label="GitHub">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.118 2.22-.253 4.555-1.113 4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.46.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/>
                             </svg>
                         </a>
                         <a href="#" class="text-gray-300 hover:text-accent transition-colors" aria-label="Facebook">
