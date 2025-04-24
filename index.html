@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheese Chompers 3D - Exciting Physics-Based Battle Royale Game | Play Free Online</title>
+    <meta name="description" content="Play Cheese Chompers 3D, an exciting physics-based battle royale game where you control agile rats in intense arena battles. Free to play, no download required!">
+    <meta name="keywords" content="cheese chompers 3d, battle royale game, physics game, online game, free game, 3d game, multiplayer game">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Cheese Chompers 3D - Physics-Based Battle Royale Game">
+    <meta property="og:description" content="Join the cheese-fueled mayhem in this exciting physics-based battle royale game. Play free in your browser!">
+    <meta property="og:image" content="https://cheesechompers3d.org/imgs/cheese-chompers-3d-512x512.png">
+    <meta property="og:url" content="https://cheesechompers3d.org">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cheese Chompers 3D - Physics-Based Battle Royale Game">
+    <meta name="twitter:description" content="Join the cheese-fueled mayhem in this exciting physics-based battle royale game. Play free in your browser!">
+    <meta name="twitter:image" content="https://cheesechompers3d.org/imgs/cheese-chompers-3d-512x512.png">
+    <link rel="canonical" href="https://cheesechompers3d.org" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#FFF8E7',
+                        'primary': '#FF6B6B',
+                        'secondary': '#4ECDC4',
+                        'accent': '#FFD93D',
+                        'dark': '#2C3E50'
+                    },
+                    fontFamily: {
+                        'display': ['Righteous', 'cursive'],
+                        'body': ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFF8E7;
+            font-family: 'Poppins', sans-serif;
+            color: #333333;
+        }
+        .game-card {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.3s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: #333333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-item:hover {
+            color: #FF6B6B;
+        }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #FF6B6B;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover::after {
+            width: 80%;
+            left: 10%;
+        }
+        .game-info-card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .game-info-label {
+            color: #666666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .game-info-value {
+            color: #333333;
+            font-weight: 600;
+        }
+        .rating-section {
+            padding: 1rem 2rem;
+            margin-top: -1rem;
+        }
+        .rating-star {
+            width: 1.5rem;
+            height: 1.5rem;
+            transition: all 0.3s ease;
+            color: #FFD93D;
+            cursor: pointer;
+        }
+        .rating-star:hover {
+            transform: scale(1.2);
+        }
+        .category-tag {
+            background: #4ECDC4;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="text-dark">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <h1 class="text-4xl font-display text-center mb-4 text-primary float-animation">Cheese Chompers 3D</h1>
+            <nav class="nav-container border-t border-b border-gray-200">
+                <a href="#game" class="nav-item">3D Games</a>
+                <a href="#about" class="nav-item">Battle Royale</a>
+                <a href="#features" class="nav-item">Physics-Based</a>
+                <a href="#faq" class="nav-item">Funny Animal</a>
+                <a href="#comments" class="nav-item">Hot Games</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex gap-4 mb-6">
+            <span class="category-tag">Battle Royale</span>
+            <span class="category-tag">Physics-Based</span>
+            <span class="category-tag">Funny Animal</span>
+            <span class="category-tag">3D Games</span>
+        </div>
+
+        <section id="game" class="mb-8">
+            <h2 class="text-3xl font-display mb-6 text-primary">Play Cheese Chompers 3D</h2>
+            <div class="game-card rounded-xl overflow-hidden relative" id="gameContainer">
+                <!-- Game thumbnail and play button -->
+                <div id="gameThumbnail" class="relative">
+                    <img 
+                        src="imgs/cheese-chompers-3d-512x512.png" 
+                        alt="Cheese Chompers 3D Thumbnail" 
+                        class="w-full h-[600px] object-cover object-center"
+                        loading="lazy"
+                    >
+                    <div class="absolute inset-0 bg-black/30"></div>
+                    <button 
+                        id="playButton"
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-8 py-4 rounded-full flex items-center gap-2 hover:bg-primary/90 transition-all shadow-lg hover:scale-105"
+                    >
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
+                        </svg>
+                        <span class="font-semibold text-lg">Play Game</span>
+                    </button>
+                </div>
+                <!-- Game iframe (hidden initially) -->
+                <iframe 
+                    id="gameFrame"
+                    src="about:blank"
+                    data-src="https://html-classic.itch.zone/html/13428924/CheeseChompers3DWeb/index.html" 
+                    class="w-full h-[600px] border-0 hidden"
+                    allow="fullscreen"
+                    title="Cheese Chompers 3D Game">
+                </iframe>
+                <!-- Fullscreen button (hidden initially) -->
+                <button 
+                    id="fullscreenButton"
+                    class="hidden absolute bottom-4 right-4 bg-dark/80 text-white p-2 rounded-lg hover:bg-dark transition-all"
+                    title="Toggle Fullscreen"
+                >
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <section class="game-card rating-section rounded-xl mb-8">
+            <div class="flex items-center justify-between">
+                <h3 class="text-xl font-display text-primary">Rate This Game</h3>
+                <div class="flex items-center gap-4">
+                    <div class="rating-container flex gap-1">
+                        <svg class="rating-star" data-rating="1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <!-- Repeat for other stars -->
+                    </div>
+                    <span class="text-3xl font-display text-accent" id="current-rating">5</span>
+                </div>
+            </div>
+            <p class="text-secondary text-sm mt-2" id="rating-message">Click to rate!</p>
+        </section>
+
+        <section id="about" class="mb-16 game-card p-8 rounded-xl">
+            <h2 class="text-3xl font-display mb-6 text-primary">Introduction to Cheese Chompers 3D</h2>
+            <div class="prose max-w-none">
+                <div class="flex flex-col md:flex-row gap-8 items-start mb-8">
+                    <div class="md:w-2/3">
+                        <p class="text-lg mb-6">Welcome to Cheese Chompers 3D, an exhilarating browser-based, animal-themed knockout game where you control a goofy rat in an intense free-for-all arena. Originally modded from the popular Crazy Cattle 3D, this version transforms the gameplay by replacing sheep with comical rats, introducing an entirely new interface and sound design, and delivering a cheese-fueled challenge like no other.</p>
+                        
+                        <p class="text-lg mb-6">Built in Unity with WebGL technology, it offers fast-paced gameplay with innovative twists, like speed-boosting flips and unpredictable collisions. The game features a unique physics system that makes every match feel different, as rats bounce, flip, and collide in their quest for cheese-based supremacy.</p>
+                    </div>
+                    <div class="md:w-1/3">
+                        <div class="game-card overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
+                            <img 
+                                src="imgs/cheese-chompers-3d-512x512.png" 
+                                alt="Cheese Chompers 3D Gameplay" 
+                                class="w-full h-auto rounded-lg"
+                                loading="lazy"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-display text-secondary">Game Features</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Fast, energetic action with physics-based gameplay
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Spectacular explosion effects on successful knockouts
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Mid-air flip mechanics with speed boost rewards
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Chaotic multiplayer battles with AI or real players
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Unique rodent-themed sound effects and music
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-display text-secondary">How to Play</h3>
+                        <div class="space-y-4">
+                            <p class="text-base">Start your adventure in a flat 3D arena filled with other players. Your mission is simple yet challenging: survive, knock out other rats, and claim your cheese glory! Here's how to master the game:</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    Use WASD keys for precise movement control
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    Hold Space to jump and perform mid-air flips
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    Time your flips for speed boosts and tactical advantage
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    Use momentum and timing to knock opponents off the arena
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="howtoplay" class="mb-16 game-card p-8 rounded-xl">
+            <h2 class="text-3xl font-display mb-6 text-primary">How to Play</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="prose max-w-none">
+                        <p class="text-lg mb-6">Master the art of cheese chomping in this fast-paced arena battle! Your mission is to become the ultimate Cheese Champion by outmaneuvering your opponents and staying in the arena. Here's your comprehensive guide to domination:</p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Basic Controls -->
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-display text-secondary flex items-center gap-2">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                                Basic Controls
+                            </h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-cream/50 p-4 rounded-lg">
+                                    <div class="font-semibold mb-2">Movement</div>
+                                    <p class="text-sm">WASD or Arrow Keys</p>
+                                    <div class="mt-2 flex gap-2">
+                                        <kbd class="px-2 py-1 bg-white rounded shadow">W</kbd>
+                                        <kbd class="px-2 py-1 bg-white rounded shadow">A</kbd>
+                                        <kbd class="px-2 py-1 bg-white rounded shadow">S</kbd>
+                                        <kbd class="px-2 py-1 bg-white rounded shadow">D</kbd>
+                                    </div>
+                                </div>
+                                <div class="bg-cream/50 p-4 rounded-lg">
+                                    <div class="font-semibold mb-2">Jump & Flip</div>
+                                    <p class="text-sm">Space Bar</p>
+                                    <div class="mt-2">
+                                        <kbd class="px-6 py-1 bg-white rounded shadow">Space</kbd>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Techniques -->
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-display text-secondary flex items-center gap-2">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                Advanced Techniques
+                            </h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <span class="bg-secondary text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1">1</span>
+                                    <div>
+                                        <span class="font-semibold">Speed Boost Flip</span>
+                                        <p class="text-sm text-gray-600">Hold Space while airborne to perform a flip. Successfully landing a flip grants a temporary speed boost!</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="bg-secondary text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1">2</span>
+                                    <div>
+                                        <span class="font-semibold">Strategic Knockouts</span>
+                                        <p class="text-sm text-gray-600">Use your momentum to knock opponents off the arena. The faster you're moving, the more powerful the impact!</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="bg-secondary text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1">3</span>
+                                    <div>
+                                        <span class="font-semibold">Recovery Jumps</span>
+                                        <p class="text-sm text-gray-600">Been knocked off? Quick reflexes with well-timed jumps can save you from elimination!</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Tips & Strategies -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-display text-secondary flex items-center gap-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                            Pro Tips
+                        </h3>
+                        <div class="bg-cream/50 p-6 rounded-lg space-y-4">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/>
+                                </svg>
+                                <p class="text-sm">Chain multiple flips for longer speed boosts</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/>
+                                </svg>
+                                <p class="text-sm">Use the arena edges to your advantage</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/>
+                                </svg>
+                                <p class="text-sm">Time your attacks when opponents are mid-flip</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/>
+                                </svg>
+                                <p class="text-sm">Stay near the center when multiple opponents are nearby</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game Modes -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-display text-secondary flex items-center gap-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                            </svg>
+                            Game Modes
+                        </h3>
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="bg-cream/50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-primary">Free-for-All Arena</h4>
+                                <p class="text-sm text-gray-600 mt-2">Every rat for themselves! Be the last one standing in this chaotic battle arena. Knock out your opponents while avoiding elimination.</p>
+                            </div>
+                            <div class="bg-cream/50 p-4 rounded-lg opacity-75">
+                                <h4 class="font-semibold text-primary flex items-center gap-2">
+                                    Team Battle
+                                    <span class="text-xs bg-primary/20 text-primary px-2 py-1 rounded">Coming Soon</span>
+                                </h4>
+                                <p class="text-sm text-gray-600 mt-2">Form alliances and battle in teams! Coordinate with your teammates to dominate the arena.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="game-info-card">
+                    <span class="game-info-label">Developer</span>
+                    <span class="game-info-value text-purple-600">FreePlay LLC</span>
+                </div>
+                <div class="game-info-card">
+                    <span class="game-info-label">Rating</span>
+                    <div class="flex items-center gap-2">
+                        <span class="game-info-value text-2xl text-yellow-500">9.0</span>
+                        <span class="text-sm text-gray-600">(24,762)</span>
+                    </div>
+                </div>
+                <div class="game-info-card">
+                    <span class="game-info-label">Released</span>
+                    <span class="game-info-value">April 2025</span>
+                </div>
+                <div class="game-info-card">
+                    <span class="game-info-label">Technology</span>
+                    <span class="game-info-value text-cyan-600">HTML5 (Unity WebGL)</span>
+                </div>
+                <div class="game-info-card">
+                    <span class="game-info-label">Platforms</span>
+                    <span class="game-info-value text-green-600">Browser & Mobile</span>
+                </div>
+                <div class="game-info-card">
+                    <span class="game-info-label">Languages</span>
+                    <span class="game-info-value">English</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="mb-16">
+            <h2 class="text-3xl font-display mb-6 text-primary">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-display mb-3 text-secondary">How do I play the game?</h3>
+                    <p class="text-dark">Use WASD keys for movement and hold Space to jump. The key to success is mastering the mid-air flip mechanics - perform flips during jumps to gain temporary speed boosts. Use this advantage to outmaneuver your opponents and knock them off the arena.</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-display mb-3 text-secondary">Is the game free to play?</h3>
+                    <p class="text-dark">Yes! Cheese Chompers 3D is completely free to play in your web browser. No downloads or installations required - just jump in and start playing instantly!</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-display mb-3 text-secondary">Can I play with my friends?</h3>
+                    <p class="text-dark">Currently, the game supports both AI opponents and real players, depending on the game mode. While the player count isn't displayed, you'll always have plenty of competition in the arena!</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-display mb-3 text-secondary">What makes this game different from Crazy Cattle 3D?</h3>
+                    <p class="text-dark">While inspired by Crazy Cattle 3D, Cheese Chompers 3D offers a unique twist with its rat characters, cheese-themed elements, and specialized sound design. The physics system has been fine-tuned for more dynamic gameplay, and the addition of speed-boost mechanics adds a new strategic layer.</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-display mb-3 text-secondary">Are there different game modes?</h3>
+                    <p class="text-dark">The game currently features a single chaotic free-for-all arena mode. While there's only one map available, the physics-based gameplay ensures that every match feels unique and exciting. Stay tuned for potential updates with new modes and maps!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="comments" class="mb-16">
+            <h2 class="text-3xl font-display mb-6 text-primary">Player Reviews</h2>
+            
+            <!-- 现有评论展示 -->
+            <div class="space-y-6">
+                <div class="game-card p-6 rounded-xl">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center font-bold mr-3">JD</div>
+                        <div>
+                            <p class="font-semibold text-dark">John D.</p>
+                            <p class="text-sm text-gray-500">2 hours ago</p>
+                        </div>
+                    </div>
+                    <p class="text-dark">Great game! The 3D graphics are amazing and the gameplay is super fun.</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 rounded-full bg-pink-500 flex items-center justify-center font-bold mr-3">SM</div>
+                        <div>
+                            <p class="font-semibold text-dark">Sarah M.</p>
+                            <p class="text-sm text-gray-500">5 hours ago</p>
+                        </div>
+                    </div>
+                    <p class="text-dark">I love the challenge of collecting cheese while avoiding obstacles. Highly recommended!</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center font-bold mr-3">RK</div>
+                        <div>
+                            <p class="font-semibold text-dark">Ryan K.</p>
+                            <p class="text-sm text-gray-500">1 day ago</p>
+                        </div>
+                    </div>
+                    <p class="text-dark">The physics system is really well done! Love doing mid-air flips and knocking other players off the arena. Can't wait for new maps!</p>
+                </div>
+            </div>
+            <!-- 评论表单 -->
+            <div class="game-card p-6 rounded-xl mb-8">
+                <h3 class="text-xl font-display mb-4 text-secondary">Leave a Comment</h3>
+                <form class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" 
+                                class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                placeholder="Your name"
+                                required
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" 
+                                class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                placeholder="Your email"
+                                required
+                            >
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Comment</label>
+                        <textarea 
+                            class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all h-32"
+                            placeholder="Share your thoughts about the game..."
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" id="terms" class="rounded text-primary focus:ring-primary" required>
+                        <label for="terms" class="text-sm text-gray-600">I'd read and agree to the terms and conditions.</label>
+                    </div>
+                    <button type="submit" 
+                        class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium">
+                        Comment
+                    </button>
+                </form>
+            </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 mt-16">
+        <div class="container mx-auto px-4 py-8 text-center">
+            <p class="text-gray-600">&copy; 2025 Cheese Chompers 3D. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Cheese Chompers 3D",
+        "description": "An exciting physics-based battle royale game where you control agile rats in intense arena battles.",
+        "genre": ["Battle Royale", "Action", "Physics-Based", "Arcade"],
+        "gamePlatform": ["Web Browser", "Android", "iOS"],
+        "applicationCategory": "Game",
+        "operatingSystem": ["Web Browser", "Android", "iOS"],
+        "url": "https://cheesechompers3d.org",
+        "image": "imgs/cheese-chompers-3d-512x512.png",
+        "screenshot": "imgs/cheese-chompers-3d-512x512.png",
+        "datePublished": "2025-04",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "FreePlay LLC"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "9.0",
+            "ratingCount": "24762",
+            "bestRating": "10",
+            "worstRating": "1"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "FreePlay LLC"
+        },
+        "playMode": "MultiPlayer",
+        "gamePlatform": ["Web Browser", "Android App", "iOS App"],
+        "applicationCategory": "Game",
+        "contentRating": "Everyone"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "How do I play the game?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use WASD keys for movement and hold Space to jump. The key to success is mastering the mid-air flip mechanics - perform flips during jumps to gain temporary speed boosts. Use this advantage to outmaneuver your opponents and knock them off the arena."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Is the game free to play?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! Cheese Chompers 3D is completely free to play in your web browser. No downloads or installations required - just jump in and start playing instantly!"
+            }
+        }, {
+            "@type": "Question",
+            "name": "Can I play with my friends?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Currently, the game supports both AI opponents and real players, depending on the game mode. While the player count isn't displayed, you'll always have plenty of competition in the arena!"
+            }
+        }, {
+            "@type": "Question",
+            "name": "What makes this game different from Crazy Cattle 3D?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "While inspired by Crazy Cattle 3D, Cheese Chompers 3D offers a unique twist with its rat characters, cheese-themed elements, and specialized sound design. The physics system has been fine-tuned for more dynamic gameplay, and the addition of speed-boost mechanics adds a new strategic layer."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Are there different game modes?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The game currently features a single chaotic free-for-all arena mode. While there's only one map available, the physics-based gameplay ensures that every match feels unique and exciting. Stay tuned for potential updates with new modes and maps!"
+            }
+        }]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://cheesechompers3d.org",
+        "name": "Cheese Chompers 3D",
+        "description": "Play Cheese Chompers 3D, an exciting physics-based battle royale game where you control agile rats in intense arena battles.",
+        "potentialAction": {
+            "@type": "PlayAction",
+            "target": "https://cheesechompers3d.org/#game"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Basic Controls",
+                "description": "WASD for movement, Space for jump and flips"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Advanced Techniques",
+                "description": "Speed boost flips, strategic knockouts, and recovery jumps"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Pro Tips",
+                "description": "Chain multiple flips for longer speed boosts, use arena edges strategically"
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Game Modes",
+                "description": "Free-for-All Arena and upcoming Team Battle mode"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Review",
+        "itemReviewed": {
+            "@type": "VideoGame",
+            "name": "Cheese Chompers 3D"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "John D."
+        },
+        "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+        },
+        "datePublished": "2025-04-15",
+        "reviewBody": "Great game! The 3D graphics are amazing and the gameplay is super fun."
+    }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('.rating-star');
+            const ratingMessage = document.getElementById('rating-message');
+            const currentRating = document.getElementById('current-rating');
+            let userRating = 5; // 默认5星
+
+            const ratingMessages = {
+                1: "Poor",
+                2: "Fair",
+                3: "Good",
+                4: "Very Good",
+                5: "Excellent!"
+            };
+
+            function updateStars(rating) {
+                stars.forEach((star, index) => {
+                    if (index < rating) {
+                        star.classList.add('text-yellow-400');
+                        star.classList.remove('text-gray-400');
+                    } else {
+                        star.classList.remove('text-yellow-400');
+                        star.classList.add('text-gray-400');
+                    }
+                });
+                currentRating.textContent = rating;
+                ratingMessage.textContent = ratingMessages[rating] || "Rate this game";
+            }
+
+            // 初始化显示5星
+            updateStars(5);
+
+            stars.forEach(star => {
+                star.addEventListener('mouseover', function() {
+                    const rating = this.dataset.rating;
+                    updateStars(rating);
+                });
+
+                star.addEventListener('click', function() {
+                    const rating = this.dataset.rating;
+                    userRating = rating;
+                    updateStars(rating);
+                    ratingMessage.textContent = "Thanks for rating!";
+                    
+                    // 这里可以添加发送评分到服务器的代码
+                    console.log('Rating submitted:', rating);
+                });
+            });
+
+            // 鼠标移出评分区域时恢复用户选择的评分
+            document.querySelector('.rating-container').addEventListener('mouseleave', function() {
+                updateStars(userRating);
+                ratingMessage.textContent = userRating ? "Thanks for rating!" : "Click to rate!";
+            });
+
+            const gameContainer = document.getElementById('gameContainer');
+            const gameThumbnail = document.getElementById('gameThumbnail');
+            const gameFrame = document.getElementById('gameFrame');
+            const playButton = document.getElementById('playButton');
+            const fullscreenButton = document.getElementById('fullscreenButton');
+
+            // Play button click handler
+            playButton.addEventListener('click', function() {
+                // Load the game
+                gameFrame.src = gameFrame.dataset.src;
+                gameFrame.classList.remove('hidden');
+                gameThumbnail.classList.add('hidden');
+                fullscreenButton.classList.remove('hidden');
+            });
+
+            // Fullscreen button click handler
+            fullscreenButton.addEventListener('click', function() {
+                if (!document.fullscreenElement) {
+                    if (gameContainer.requestFullscreen) {
+                        gameContainer.requestFullscreen();
+                    } else if (gameContainer.webkitRequestFullscreen) {
+                        gameContainer.webkitRequestFullscreen();
+                    } else if (gameContainer.msRequestFullscreen) {
+                        gameContainer.msRequestFullscreen();
+                    }
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                }
+            });
+
+            // Update fullscreen button icon on fullscreen change
+            document.addEventListener('fullscreenchange', updateFullscreenButton);
+            document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+            document.addEventListener('mozfullscreenchange', updateFullscreenButton);
+            document.addEventListener('MSFullscreenChange', updateFullscreenButton);
+
+            function updateFullscreenButton() {
+                const isFullscreen = document.fullscreenElement || 
+                    document.webkitFullscreenElement || 
+                    document.mozFullScreenElement || 
+                    document.msFullscreenElement;
+
+                fullscreenButton.innerHTML = isFullscreen ? 
+                    '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>' :
+                    '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/></svg>';
+            }
+        });
+    </script>
+</body>
+</html> 
