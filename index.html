@@ -30,7 +30,8 @@
                         'primary': '#FF6B6B',
                         'secondary': '#4ECDC4',
                         'accent': '#FFD93D',
-                        'dark': '#2C3E50'
+                        'dark': '#2C3E50',
+                        'nav-orange': '#FF9F43'
                     },
                     fontFamily: {
                         'display': ['Righteous', 'cursive'],
@@ -58,7 +59,7 @@
         }
         .nav-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
             gap: 2rem;
             padding: 1rem 0;
@@ -66,13 +67,13 @@
         .nav-item {
             position: relative;
             padding: 0.5rem 1rem;
-            color: #333333;
-            font-weight: 500;
+            color: #FF9F43;
+            font-weight: 600;
             transition: all 0.3s ease;
             white-space: nowrap;
         }
         .nav-item:hover {
-            color: #FF6B6B;
+            color: #FF7F00;
         }
         .nav-item::after {
             content: '';
@@ -81,7 +82,7 @@
             height: 2px;
             bottom: 0;
             left: 50%;
-            background-color: #FF6B6B;
+            background-color: #FF7F00;
             transition: all 0.3s ease;
         }
         .nav-item:hover::after {
@@ -142,18 +143,55 @@
 <body class="text-dark">
     <header class="bg-white shadow-sm">
         <div class="container mx-auto px-4 py-4">
-            <h1 class="text-4xl font-display text-center mb-4 text-primary float-animation">Cheese Chompers 3D</h1>
-            <nav class="nav-container border-t border-b border-gray-200">
-                <a href="#game" class="nav-item">3D Games</a>
-                <a href="#about" class="nav-item">Battle Royale</a>
-                <a href="#features" class="nav-item">Physics-Based</a>
-                <a href="#faq" class="nav-item">Funny Animal</a>
-                <a href="#comments" class="nav-item">Hot Games</a>
-            </nav>
+            <div class="flex justify-between items-center">
+                <h1 class="text-4xl font-display text-primary float-animation">Cheese Chompers 3D</h1>
+                <nav class="nav-container flex-wrap justify-center md:justify-end">
+                    <a href="./index.html" class="nav-item">Home</a>
+                    <a href="./italian-brainrot-clicker.html" class="nav-item">Italian Brainrot Clicker</a>
+                </nav>
+            </div>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-8">
+        <!-- 添加面包屑导航 -->
+        <nav class="flex mb-6" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <a href="/games" class="ml-1 text-sm font-medium text-gray-700 hover:text-primary md:ml-2">Games</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <a href="/games/battle-royale" class="ml-1 text-sm font-medium text-gray-700 hover:text-primary md:ml-2">Battle Royale</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="ml-1 text-sm font-medium text-primary md:ml-2">Cheese Chompers 3D</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
         <div class="flex gap-4 mb-6">
             <span class="category-tag">Battle Royale</span>
             <span class="category-tag">Physics-Based</span>
@@ -907,6 +945,39 @@
                     '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/></svg>';
             }
         });
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://cheesechompers3d.org"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Games",
+                "item": "https://cheesechompers3d.org/games"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Battle Royale",
+                "item": "https://cheesechompers3d.org/games/battle-royale"
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Cheese Chompers 3D",
+                "item": "https://cheesechompers3d.org/games/battle-royale/cheese-chompers-3d"
+            }
+        ]
+    }
     </script>
 </body>
 </html> 
