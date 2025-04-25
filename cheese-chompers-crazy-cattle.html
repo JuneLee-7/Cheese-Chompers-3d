@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheese Chompers - Crazy Cattle 3D | Fun Physics-Based Adventure Game | Play Free Online</title>
+    <meta name="description" content="Play Cheese Chompers - Crazy Cattle 3D, an exciting physics-based adventure game where you control a crazy cattle through challenging obstacles. Free to play online!">
+    <meta name="keywords" content="crazy cattle 3d, physics game, adventure game, online game, free game, 3d game, cheese chompers">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Cheese Chompers - Crazy Cattle 3D - Physics Adventure Game">
+    <meta property="og:description" content="Jump, roll, and bounce your way through challenging obstacles in this physics-based adventure game. Play free in your browser!">
+    <meta property="og:image" content="https://cheesechompers3d.org/imgs/crazy-cattle-3d-thumb.png">
+    <meta property="og:url" content="https://cheesechompers3d.org/games/crazy-cattle-3d">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cheese Chompers - Crazy Cattle 3D - Physics Adventure Game">
+    <meta name="twitter:description" content="Jump, roll, and bounce your way through challenging obstacles in this physics-based adventure game. Play free in your browser!">
+    <meta name="twitter:image" content="https://cheesechompers3d.org/imgs/crazy-cattle-3d-thumb.png">
+    <link rel="canonical" href="https://cheesechompers3d.org/games/crazy-cattle-3d" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#FFF8E7',
+                        'primary': '#FF6B6B',
+                        'secondary': '#4ECDC4',
+                        'accent': '#FFD93D',
+                        'dark': '#2C3E50',
+                        'nav-orange': '#FF9F43'
+                    },
+                    fontFamily: {
+                        'display': ['Righteous', 'cursive'],
+                        'body': ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFF8E7;
+            font-family: 'Poppins', sans-serif;
+            color: #333333;
+        }
+        .game-card {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.3s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 2rem;
+            padding: 0;
+            height: 64px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        .logo-text {
+            font-family: 'Righteous', cursive;
+            font-size: 1.5rem;
+            color: #FF9F43;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: #FF9F43;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-item:hover {
+            color: #FF7F00;
+        }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #FF7F00;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover::after {
+            width: 80%;
+            left: 10%;
+        }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        .active-category {
+            color: #FF7F00;
+            font-weight: 700;
+        }
+        .active-category::after {
+            width: 80%;
+            left: 10%;
+        }
+        .category-tag {
+            background: #4ECDC4;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        /* 添加默认图片样式 */
+        .default-game-img {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .logo-text {
+                display: none;
+            }
+            .nav-container {
+                gap: 1rem;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="./imgs/cheese-chompers-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./imgs/cheese-chompers-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./imgs/cheese-chompers-logo.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <meta name="theme-color" content="#FF9F43">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": ["VideoGame", "SoftwareApplication"],
+                "name": "Cheese Chompers - Crazy Cattle 3D",
+                "description": "An exciting physics-based adventure game where you control a crazy cattle through challenging obstacles. Jump, roll, and bounce your way to victory!",
+                "genre": ["Adventure Game", "Physics Game", "Platform Game", "Casual Game"],
+                "gamePlatform": ["Web Browser"],
+                "applicationCategory": "Game",
+                "operatingSystem": ["Windows", "macOS", "Android", "iOS"],
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Cheese Chompers Games",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://cheesechompers3d.org/imgs/cheese-chompers-logo.png",
+                        "width": 180,
+                        "height": 60
+                    }
+                },
+                "datePublished": "2025-04-25",
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "https://cheesechompers3d.org/imgs/crazy-cattle-3d-thumb.png",
+                    "width": 1200,
+                    "height": 630
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "ratingCount": "724",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://cheesechompers3d.org/",
+                            "name": "Home"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://cheesechompers3d.org/games",
+                            "name": "Games"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://cheesechompers3d.org/games/crazy-cattle-3d",
+                            "name": "Crazy Cattle 3D"
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How do I play Crazy Cattle 3D?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Use arrow keys or WASD to control the cattle. Press spacebar to jump, and use the mouse to aim and shoot. Collect coins and avoid obstacles to progress through levels."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Crazy Cattle 3D free to play?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Crazy Cattle 3D is completely free to play in your web browser. No download or installation required."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What are the system requirements?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Crazy Cattle 3D runs in any modern web browser. We recommend using Chrome, Firefox, or Safari for the best experience."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+<body class="text-dark">
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="logo-container">
+                    <img src="./imgs/cheese-chompers-logo.png" alt="Cheese Chompers 3D Logo" class="logo-image">
+                    <span class="logo-text">Cheese Chompers 3D</span>
+                </a>
+                <nav class="nav-container">
+                    <a href="./index.html" data-category="all" class="nav-item">All Games</a>
+                    <a href="./index.html?category=physics" data-category="physics" class="nav-item">Physics Games</a>
+                    <a href="./index.html?category=racing" data-category="racing" class="nav-item">Racing Games</a>
+                    <a href="./index.html?category=clicker" data-category="clicker" class="nav-item">Clicker Games</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 添加顶部间距以防止内容被固定导航栏遮挡 -->
+    <div class="h-16"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Breadcrumb Navigation -->
+        <nav class="flex mb-6" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <a href="/games" class="ml-1 text-sm font-medium text-gray-700 hover:text-primary md:ml-2">Games</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="ml-1 text-sm font-medium text-primary md:ml-2">Crazy Cattle 3D</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
+        
+
+        <div class="flex gap-4 mb-6">
+            <span class="category-tag">Adventure</span>
+            <span class="category-tag">Physics-Based</span>
+            <span class="category-tag">3D Games</span>
+            <span class="category-tag">Platform</span>
+        </div>
+
+        <!-- Game Content -->
+        <div class="game-card rounded-lg p-6 mb-8">
+            <div class="aspect-w-16 aspect-h-9 mb-6">
+                <iframe src="https://crazy-cattle3d.org/game/crazycattle3d/" allowfullscreen="" width="960" height="620" frameborder="0"><a href="https://crazy-cattle3d.org/game/crazycattle3d/">Play Crazy Cattle 3D on cheese chompers</a></iframe>
+            </div>
+            
+            <div class="prose max-w-none">
+                <h2 class="text-2xl font-display text-primary mb-4">About Crazy Cattle 3D</h2>
+                <p class="mb-4">Welcome to the wild world of Crazy Cattle 3D! This physics-based adventure game puts you in control of a wacky cattle as you navigate through challenging obstacles, collect coins, and unlock new abilities. If you enjoy physics-based games, you'll also love our <a href="./cheese-chompers-crazy-sheep.html" class="text-primary hover:text-secondary">Crazy Sheep 3D</a> adventure. With its unique blend of platforming and physics-based gameplay, Crazy Cattle 3D offers an exciting experience for players of all ages.</p>
+                
+                <h3 class="text-xl font-display text-primary mb-3">Game Features</h3>
+                <ul class="list-disc pl-6 mb-6">
+                    <li>Physics-based movement and interactions</li>
+                    <li>Multiple challenging levels</li>
+                    <li>Power-ups and special abilities</li>
+                    <li>Coin collection system</li>
+                    <li>Unlockable characters and skins</li>
+                    <li>Global leaderboard</li>
+                </ul>
+
+                <h3 class="text-xl font-display text-primary mb-3">How to Play</h3>
+                <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                    <h4 class="font-semibold mb-2">Controls:</h4>
+                    <ul class="list-disc pl-6">
+                        <li>Arrow Keys / WASD: Move the cattle</li>
+                        <li>Spacebar: Jump</li>
+                        <li>Mouse: Aim and shoot</li>
+                        <li>E: Interact with objects</li>
+                        <li>R: Reset level</li>
+                    </ul>
+                </div>
+
+                <h3 class="text-xl font-display text-primary mb-3">Tips & Tricks</h3>
+                <ul class="list-disc pl-6 mb-6">
+                    <li>Use momentum to your advantage</li>
+                    <li>Time your jumps carefully</li>
+                    <li>Collect coins to unlock new abilities</li>
+                    <li>Watch out for moving platforms</li>
+                    <li>Use power-ups strategically</li>
+                    <li>Try our <a href="./index.html?category=physics" class="text-primary hover:text-secondary">other physics games</a> to master different mechanics</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="game-card rounded-lg p-6">
+            <h2 class="text-2xl font-display text-primary mb-6">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4">
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-semibold mb-2">How do I save my progress?</h3>
+                    <p>Your progress is automatically saved as you complete levels and collect coins. You can continue from where you left off when you return to the game.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-semibold mb-2">Can I play on mobile devices?</h3>
+                    <p>Yes! Crazy Cattle 3D is fully optimized for mobile devices. You can play using touch controls on your smartphone or tablet.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-semibold mb-2">Are there any in-game purchases?</h3>
+                    <p>No, Crazy Cattle 3D is completely free to play. All content can be unlocked through gameplay by collecting coins and completing levels.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-semibold mb-2">How do I unlock new characters?</h3>
+                    <p>New characters can be unlocked by collecting enough coins throughout the game. Each character has unique abilities and animations.</p>
+                </div>
+
+                <div class="pb-4">
+                    <h3 class="text-lg font-semibold mb-2">What should I do if the game isn't loading?</h3>
+                    <p>Try refreshing your browser or clearing your browser cache. Make sure you have a stable internet connection and are using a modern web browser.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-semibold mb-2">Looking for more challenges?</h3>
+                    <p>Check out our <a href="./cheese-chompers-crazy-sheep.html" class="text-primary hover:text-secondary">Crazy Sheep 3D</a> game or browse our complete <a href="./index.html" class="text-primary hover:text-secondary">game collection</a> for more exciting adventures!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section id="moreGames" class="container mx-auto px-4 mb-8">
+        <h2 class="text-3xl font-display mb-6 text-primary">More Games</h2>
+        <div class="game-grid">
+            <div class="game-card" data-category="physics battle-royale">
+                <a href="./index.html" class="block">
+                    <img 
+                        src="./imgs/cheese-chompers-3d-512x512.png"
+                        data-game-title="Cheese Chompers 3D"
+                        alt="Cheese Chompers 3D" 
+                        class="w-full h-48 object-cover rounded-t-lg" 
+                        loading="lazy"
+                    >
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Cheese Chompers 3D</h3>
+                        <p class="text-gray-600 mb-4">A physics-based battle royale game with crazy rats!</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="category-tag">Physics</span>
+                            <span class="category-tag">Battle Royale</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="game-card" data-category="racing">
+                <a href="./cheese-chompers-tap-road.html" class="block">
+                    <img 
+                        src="./imgs/tap-road.jpg"
+                        data-game-title="Tap Road"
+                        alt="Cheese Chompers Tap Road" 
+                        class="w-full h-48 object-cover rounded-t-lg" 
+                        loading="lazy"
+                    >
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Cheese Chompers Tap Road</h3>
+                        <p class="text-gray-600 mb-4">Race against time in this exciting tap road game!</p>
+                        <span class="category-tag">Racing</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="game-card" data-category="clicker">
+                <a href="./italian-brainrot-clicker.html" class="block">
+                    <img 
+                        src="./imgs/italian-brainrot-clicker.jpg"
+                        data-game-title="Brainrot Clicker"
+                        alt="Italian Brainrot Clicker" 
+                        class="w-full h-48 object-cover rounded-t-lg" 
+                        loading="lazy"
+                    >
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Italian Brainrot Clicker</h3>
+                        <p class="text-gray-600 mb-4">An addictive clicker game with Italian theme!</p>
+                        <span class="category-tag">Clicker</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="game-card" data-category="physics">
+                <a href="./cheese-chompers-crazy-sheep.html" class="block">
+                    <img 
+                        src="./imgs/crazy-sheep-3d-thumb.png"
+                        data-game-title="crazy sheep 3D"
+                        alt="Crazy Sheep 3D" 
+                        class="w-full h-48 object-cover rounded-t-lg" 
+                        loading="lazy"
+                    >
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">crazy sheep 3D</h3>
+                        <p class="text-gray-600 mb-4">An addictive physics game with sheep!</p>
+                        <span class="category-tag">physics</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="game-card" data-category="clicker">
+                <a href="./cheese-chompers-curve-rush.html" class="block">
+                    <img 
+                        src="./imgs/curve-rush.jpg"
+                        data-game-title="Curve Rush"
+                        alt="Curve Rush" 
+                        class="w-full h-48 object-cover rounded-t-lg" 
+                        loading="lazy"
+                    >
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Curve Rush</h3>
+                        <p class="text-gray-600 mb-4">An addictive physics game with sheep!</p>
+                        <span class="category-tag">clicker</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-display mb-4">About Us</h3>
+                    <p class="text-gray-300">Cheese Chompers Games brings you the most exciting and fun-filled browser games. Play anywhere, anytime!</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-display mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-300 hover:text-primary">Home</a></li>
+                        <li><a href="/games" class="text-gray-300 hover:text-primary">Games</a></li>
+                        <li><a href="/about" class="text-gray-300 hover:text-primary">About</a></li>
+                        <li><a href="/contact" class="text-gray-300 hover:text-primary">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-display mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-primary">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-primary">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 Cheese Chompers Games. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // 添加图片加载错误处理函数
+        function handleImageError(img, title) {
+            img.onerror = null; // 防止循环调用
+            img.classList.add('default-game-img');
+            img.style.backgroundColor = '#f0f0f0';
+            img.src = 'data:image/svg+xml,' + encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+                    <rect width="200" height="200" fill="#FF6B6B"/>
+                    <text x="50%" y="50%" fill="white" font-family="Arial" font-size="16" text-anchor="middle">
+                        ${title || 'Game Image'}
+                    </text>
+                </svg>
+            `);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 处理所有游戏图片
+            document.querySelectorAll('img[data-game-title]').forEach(img => {
+                img.onerror = () => handleImageError(img, img.dataset.gameTitle);
+            });
+
+            // 分类切换功能
+            const moreGamesSection = document.getElementById('moreGames');
+            const gameCards = moreGamesSection.querySelectorAll('.game-card');
+            
+            // 获取URL参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialCategory = urlParams.get('category') || 'all';
+
+            // 更新导航栏活动状态和游戏显示
+            function updateCategoryDisplay(category) {
+                // 更新导航栏状态
+                document.querySelectorAll('.nav-item').forEach(navItem => {
+                    if (navItem.dataset.category === category) {
+                        navItem.classList.add('active-category');
+                    } else {
+                        navItem.classList.remove('active-category');
+                    }
+                });
+
+                // 更新游戏卡片显示
+                gameCards.forEach(card => {
+                    const cardCategories = card.dataset.category.split(' ');
+                    if (category === 'all' || cardCategories.includes(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            // 初始化分类显示
+            updateCategoryDisplay(initialCategory);
+
+            // 添加导航项点击事件
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.dataset.category;
+                    
+                    // 更新URL参数但不刷新页面
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('category', category);
+                    window.history.pushState({category}, '', newUrl);
+                    
+                    // 更新显示
+                    updateCategoryDisplay(category);
+
+                    // 平滑滚动到游戏列表
+                    moreGamesSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // 处理浏览器前进/后退
+            window.addEventListener('popstate', function(event) {
+                const category = event.state?.category || 'all';
+                updateCategoryDisplay(category);
+            });
+        });
+    </script>
+</body>
+</html> 

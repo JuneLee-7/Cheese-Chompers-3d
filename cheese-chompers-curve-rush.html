@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheese Chompers - Curve Rush | Fast-Paced Arcade Game | Play Free Online</title>
+    <meta name="description" content="Play Cheese Chompers - Curve Rush, an exciting arcade game where you navigate through challenging curves and obstacles. Free to play online!">
+    <meta name="keywords" content="curve rush, arcade game, online game, free game, cheese chompers, curve game, racing game">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Cheese Chompers - Curve Rush - Arcade Racing Game">
+    <meta property="og:description" content="Navigate through challenging curves and obstacles in this fast-paced arcade game. Play free in your browser!">
+    <meta property="og:image" content="https://cheesechompers3d.org/imgs/curve-rush-thumb.png">
+    <meta property="og:url" content="https://cheesechompers3d.org/games/curve-rush">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cheese Chompers - Curve Rush - Arcade Racing Game">
+    <meta name="twitter:description" content="Navigate through challenging curves and obstacles in this fast-paced arcade game. Play free in your browser!">
+    <meta name="twitter:image" content="https://cheesechompers3d.org/imgs/curve-rush-thumb.png">
+    <link rel="canonical" href="https://cheesechompers3d.org/games/curve-rush" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#FFF8E7',
+                        'primary': '#FF6B6B',
+                        'secondary': '#4ECDC4',
+                        'accent': '#FFD93D',
+                        'dark': '#2C3E50',
+                        'nav-orange': '#FF9F43'
+                    },
+                    fontFamily: {
+                        'display': ['Righteous', 'cursive'],
+                        'body': ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFF8E7;
+            font-family: 'Poppins', sans-serif;
+            color: #333333;
+        }
+        .game-card {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.3s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: #FF9F43;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-item:hover {
+            color: #FF7F00;
+        }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #FF7F00;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover::after {
+            width: 80%;
+            left: 10%;
+        }
+        .category-tag {
+            background: #4ECDC4;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        .logo-text {
+            font-family: 'Righteous', cursive;
+            font-size: 1.5rem;
+            color: #FF9F43;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        .game-grid .game-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+        }
+        .game-grid .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .game-grid .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+        .game-grid .game-card:hover img {
+            transform: scale(1.05);
+        }
+        .game-grid .game-card .p-4 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
+        }
+        .game-grid .category-tag {
+            display: inline-block;
+            margin: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            background: #4ECDC4;
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .game-grid .category-tag:hover {
+            background: #45b8b0;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .default-game-img {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 200px;
+            text-align: center;
+            padding: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .game-grid .game-card:hover .category-tag {
+            animation: pulse 1s infinite;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": ["VideoGame", "SoftwareApplication"],
+                "name": "Cheese Chompers - Curve Rush",
+                "description": "A fast-paced arcade game where you navigate through challenging curves and obstacles. Test your reflexes and see how far you can go!",
+                "genre": ["Arcade Game", "Racing Game", "Casual Game"],
+                "gamePlatform": ["Web Browser"],
+                "applicationCategory": "Game",
+                "operatingSystem": ["Windows", "macOS", "Android", "iOS"],
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Cheese Chompers Games",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://cheesechompers3d.org/imgs/logo.png",
+                        "width": 180,
+                        "height": 60
+                    }
+                },
+                "datePublished": "2025-05-15",
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "https://cheesechompers3d.org/imgs/curve-rush-thumb.png",
+                    "width": 1200,
+                    "height": 630
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.7",
+                    "ratingCount": "856",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://cheesechompers3d.org/",
+                            "name": "Home"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://cheesechompers3d.org/games",
+                            "name": "Games"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "@type": "WebPage",
+                            "@id": "https://cheesechompers3d.org/games/curve-rush",
+                            "name": "Curve Rush"
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How do I play Curve Rush?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Use the arrow keys or WASD to control your character. Navigate through the curves and avoid obstacles. The goal is to survive as long as possible and achieve the highest score."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Curve Rush free to play?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Curve Rush is completely free to play in your web browser. No download or installation required."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What are the system requirements?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Curve Rush runs in any modern web browser. We recommend using Chrome, Firefox, or Safari for the best experience."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+    <link rel="icon" type="image/png" sizes="32x32" href="./imgs/cheese-chompers-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./imgs/cheese-chompers-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./imgs/cheese-chompers-logo.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <meta name="theme-color" content="#FF9F43">
+</head>
+<body class="text-dark">
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="logo-container">
+                    <img src="./imgs/cheese-chompers-logo.png" alt="Cheese Chompers 3D Logo" class="logo-image">
+                    <span class="logo-text">Cheese Chompers 3D</span>
+                </a>
+                <nav class="nav-container">
+                    <a href="./index.html" data-category="all" class="nav-item">All Games</a>
+                    <a href="./index.html?category=physics" data-category="physics" class="nav-item">Physics Games</a>
+                    <a href="./index.html?category=racing" data-category="racing" class="nav-item">Racing Games</a>
+                    <a href="./index.html?category=clicker" data-category="clicker" class="nav-item">Clicker Games</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 添加顶部间距以防止内容被固定导航栏遮挡 -->
+    <div class="h-16"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Breadcrumb Navigation -->
+        <nav class="flex mb-6" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="./index.html" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <a href="./index.html" class="ml-1 text-sm font-medium text-gray-700 hover:text-primary md:ml-2">Games</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="ml-1 text-sm font-medium text-primary md:ml-2">Curve Rush</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
+        <div class="flex gap-4 mb-6">
+            <span class="category-tag">Arcade</span>
+            <span class="category-tag">Racing</span>
+            <span class="category-tag">Casual</span>
+            <span class="category-tag">Reflex</span>
+        </div>
+
+        <!-- Game Content -->
+        <div class="game-card rounded-lg p-6 mb-8">
+            <div class="aspect-w-16 aspect-h-9 mb-6">
+                <iframe src="https://game.azgame.io/curve-rush/" allowfullscreen="" width="960" height="620" frameborder="0"></iframe>
+            </div>
+            
+            <section id="moreGames" class="container mx-auto px-4 mb-8">
+                <h2 class="text-3xl font-display mb-6 text-primary">More Games</h2>
+                <div class="game-grid">
+                    <div class="game-card" data-category="physics battle-royale">
+                        <a href="./index.html" class="block">
+                            <img 
+                                src="./imgs/cheese-chompers-3d-512x512.png"
+                                data-game-title="Cheese Chompers 3D"
+                                alt="Cheese Chompers 3D" 
+                                class="w-full h-48 object-cover rounded-t-lg" 
+                                loading="lazy"
+                                onerror="handleImageError(this, this.dataset.gameTitle)"
+                            >
+                            <div class="p-4">
+                                <h3 class="text-xl font-bold mb-2">Cheese Chompers 3D</h3>
+                                <p class="text-gray-600 mb-4">A physics-based battle royale game with crazy rats!</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="category-tag">Physics</span>
+                                    <span class="category-tag">Battle Royale</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="game-card" data-category="physics">
+                        <a href="./cheese-chompers-crazy-cattle.html" class="block">
+                            <img 
+                                src="./imgs/crazy-cattle-3d-gameplay.jpg"
+                                data-game-title="Crazy Cattle 3D"
+                                alt="Cheese Chompers Crazy Cattle" 
+                                class="w-full h-48 object-cover rounded-t-lg" 
+                                loading="lazy"
+                                onerror="handleImageError(this, this.dataset.gameTitle)"
+                            >
+                            <div class="p-4">
+                                <h3 class="text-xl font-bold mb-2">Cheese Chompers - Crazy Cattle</h3>
+                                <p class="text-gray-600 mb-4">Control a crazy cattle through challenging obstacles!</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="category-tag">Physics</span>
+                                    <span class="category-tag">Adventure</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="game-card" data-category="racing">
+                        <a href="./cheese-chompers-tap-road.html" class="block">
+                            <img 
+                                src="./imgs/tap-road.jpg"
+                                data-game-title="Tap Road"
+                                alt="Cheese Chompers Tap Road" 
+                                class="w-full h-48 object-cover rounded-t-lg" 
+                                loading="lazy"
+                                onerror="handleImageError(this, this.dataset.gameTitle)"
+                            >
+                            <div class="p-4">
+                                <h3 class="text-xl font-bold mb-2">Cheese Chompers Tap Road</h3>
+                                <p class="text-gray-600 mb-4">Race against time in this exciting tap road game!</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="category-tag">Racing</span>
+                                    <span class="category-tag">Action</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="game-card" data-category="physics">
+                        <a href="./cheese-chompers-crazy-sheep.html" class="block">
+                            <img 
+                                src="./imgs/crazy-sheep-3d-thumb.png"
+                                data-game-title="Crazy Sheep 3D"
+                                alt="Crazy Sheep 3D" 
+                                class="w-full h-48 object-cover rounded-t-lg" 
+                                loading="lazy"
+                                onerror="handleImageError(this, this.dataset.gameTitle)"
+                            >
+                            <div class="p-4">
+                                <h3 class="text-xl font-bold mb-2">Crazy Sheep 3D</h3>
+                                <p class="text-gray-600 mb-4">An addictive physics game with sheep!</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="category-tag">Physics</span>
+                                    <span class="category-tag">Adventure</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="game-card" data-category="clicker">
+                        <a href="./cheese-chompers-curve-rush.html" class="block">
+                            <img 
+                                src="./imgs/curve-rush.jpg"
+                                data-game-title="Curve Rush"
+                                alt="Curve Rush" 
+                                class="w-full h-48 object-cover rounded-t-lg" 
+                                loading="lazy"
+                            >
+                            <div class="p-4">
+                                <h3 class="text-xl font-bold mb-2">Curve Rush</h3>
+                                <p class="text-gray-600 mb-4">An addictive physics game with sheep!</p>
+                                <span class="category-tag">clicker</span>
+                            </div>
+                        </a>
+                    </div>
+    
+                </div>
+            </section>
+
+            <div class="prose max-w-none">
+                <h2 class="text-2xl font-display text-primary mb-4">About Curve Rush</h2>
+                <p class="mb-4">Curve Rush is an exhilarating arcade game that challenges your reflexes and timing as you navigate through increasingly difficult curves and obstacles. If you enjoy this game, you might also like our other racing games like <a href="./cheese-chompers-tap-road.html" class="text-primary hover:text-secondary">Tap Road</a> or physics-based challenges like <a href="./cheese-chompers-crazy-cattle.html" class="text-primary hover:text-secondary">Crazy Cattle 3D</a>. With its minimalist design and addictive gameplay, Curve Rush offers a perfect blend of simplicity and challenge that will keep you coming back for more.</p>
+                
+                <h3 class="text-xl font-display text-primary mb-3">Game Features</h3>
+                <ul class="list-disc pl-6 mb-6">
+                    <li>Fast-paced arcade gameplay</li>
+                    <li>Increasing difficulty curve</li>
+                    <li>Simple yet challenging controls</li>
+                    <li>Global leaderboard</li>
+                    <li>Multiple game modes</li>
+                    <li>Unlockable characters and themes</li>
+                </ul>
+
+                <h3 class="text-xl font-display text-primary mb-3">How to Play</h3>
+                <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                    <h4 class="font-semibold mb-2">Controls:</h4>
+                    <ul class="list-disc pl-6">
+                        <li>Arrow Keys / WASD: Control direction</li>
+                        <li>Spacebar: Pause game</li>
+                        <li>Mouse: Alternative control method</li>
+                        <li>Touch: Swipe to control (mobile)</li>
+                    </ul>
+                </div>
+
+                <h3 class="text-xl font-display text-primary mb-3">Tips & Tricks</h3>
+                <ul class="list-disc pl-6 mb-6">
+                    <li>Stay focused on the upcoming curves</li>
+                    <li>Don't rush - take your time with difficult sections</li>
+                    <li>Practice makes perfect - keep trying!</li>
+                    <li>Watch for patterns in the obstacles</li>
+                    <li>Use power-ups strategically when available</li>
+                    <li>Check out our <a href="./index.html" class="text-primary hover:text-secondary">other games</a> to improve your skills</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="game-card rounded-lg p-6">
+            <h2 class="text-2xl font-display text-primary mb-6">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4">
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-semibold mb-2">How do I save my high score?</h3>
+                    <p>Your high score is automatically saved to your browser's local storage. You can view your best scores in the game's leaderboard section.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-semibold mb-2">Can I play on mobile devices?</h3>
+                    <p>Yes! Curve Rush is fully optimized for mobile devices. Simply swipe left or right to control your character on touchscreen devices.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-semibold mb-2">Are there any in-game purchases?</h3>
+                    <p>No, Curve Rush is completely free to play. All content can be unlocked through gameplay by achieving high scores and completing challenges.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-semibold mb-2">How do I unlock new characters?</h3>
+                    <p>New characters can be unlocked by reaching specific score milestones. Each character has unique visual effects and animations.</p>
+                </div>
+
+                <div class="pb-4">
+                    <h3 class="text-lg font-semibold mb-2">What should I do if the game isn't loading?</h3>
+                    <p>Try refreshing your browser or clearing your browser cache. Make sure you have a stable internet connection and are using a modern web browser.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-semibold mb-2">Are there any similar games?</h3>
+                    <p>Yes! If you enjoy Curve Rush, try our other arcade games like <a href="./cheese-chompers-tap-road.html" class="text-primary hover:text-secondary">Tap Road</a> or check out our <a href="./index.html?category=racing" class="text-primary hover:text-secondary">racing games collection</a>.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-display mb-4">About Us</h3>
+                    <p class="text-gray-300">Cheese Chompers Games brings you the most exciting and fun-filled browser games. Play anywhere, anytime!</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-display mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./index.html" class="text-gray-300 hover:text-primary">Home</a></li>
+                        <li><a href="./cheese-chompers-crazy-cattle.html" class="text-gray-300 hover:text-primary">Crazy Cattle</a></li>
+                        <li><a href="./cheese-chompers-crazy-sheep.html" class="text-gray-300 hover:text-primary">Crazy Sheep</a></li>
+                        <li><a href="./cheese-chompers-tap-road.html" class="text-gray-300 hover:text-primary">Tap Road</a></li>
+                        <li><a href="./cheese-chompers-curve-rush.html" class="text-gray-300 hover:text-primary">Curve Rush</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-display mb-4">Related Games</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./cheese-chompers-crazy-cattle.html" class="text-gray-300 hover:text-primary">Crazy Cattle 3D</a></li>
+                        <li><a href="./cheese-chompers-tap-road.html" class="text-gray-300 hover:text-primary">Tap Road</a></li>
+                        <li><a href="./cheese-chompers-crazy-sheep.html" class="text-gray-300 hover:text-primary">Crazy Sheep 3D</a></li>
+                        <li><a href="./index.html" class="text-gray-300 hover:text-primary">View All Games</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 Cheese Chompers Games. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

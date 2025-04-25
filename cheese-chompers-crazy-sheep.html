@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheese Chompers - Crazy Sheep 3D | Fun Physics-Based Adventure Game | Play Free Online</title>
+    <meta name="description" content="Play Cheese Chompers - Crazy Sheep 3D, an exciting physics-based adventure game where you control a crazy sheep through challenging obstacles. Free to play online!">
+    <meta name="keywords" content="crazy sheep 3d, physics game, adventure game, online game, free game, 3d game, cheese chompers">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Cheese Chompers - Crazy Sheep 3D - Physics Adventure Game">
+    <meta property="og:description" content="Jump, roll, and bounce your way through challenging obstacles in this physics-based adventure game. Play free in your browser!">
+    <meta property="og:image" content="https://cheesechompers3d.org/imgs/crazy-sheep-3d-thumb.png">
+    <meta property="og:url" content="https://cheesechompers3d.org/games/crazy-sheep-3d">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cheese Chompers - Crazy Sheep 3D - Physics Adventure Game">
+    <meta name="twitter:description" content="Jump, roll, and bounce your way through challenging obstacles in this physics-based adventure game. Play free in your browser!">
+    <meta name="twitter:image" content="https://cheesechompers3d.org/imgs/crazy-sheep-3d-thumb.png">
+    <link rel="canonical" href="https://cheesechompers3d.org/games/crazy-sheep-3d" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#FFF8E7',
+                        'primary': '#FF6B6B',
+                        'secondary': '#4ECDC4',
+                        'accent': '#FFD93D',
+                        'dark': '#2C3E50',
+                        'nav-orange': '#FF9F43'
+                    },
+                    fontFamily: {
+                        'display': ['Righteous', 'cursive'],
+                        'body': ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFF8E7;
+            font-family: 'Poppins', sans-serif;
+            color: #333333;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        .logo-text {
+            font-family: 'Righteous', cursive;
+            font-size: 1.5rem;
+            color: #FF9F43;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+        .game-card {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.3s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-3px);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: #FF9F43;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-item:hover {
+            color: #FF7F00;
+        }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #FF7F00;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover::after {
+            width: 80%;
+            left: 10%;
+        }
+        .category-tag {
+            background: #4ECDC4;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        .game-grid .game-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .game-grid .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .game-grid .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+        }
+        .game-grid .game-card .p-4 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .game-grid .category-tag {
+            display: inline-block;
+            margin: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            background: #4ECDC4;
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .game-grid .category-tag:hover {
+            background: #45b8b0;
+            transform: scale(1.05);
+        }
+        .default-game-img {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 200px;
+        }
+    </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="./imgs/cheese-chompers-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./imgs/cheese-chompers-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./imgs/cheese-chompers-logo.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <meta name="theme-color" content="#FF9F43">
+</head>
+<body class="text-dark">
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="logo-container">
+                    <img src="./imgs/cheese-chompers-logo.png" alt="Cheese Chompers 3D Logo" class="logo-image">
+                    <span class="logo-text">Cheese Chompers 3D</span>
+                </a>
+                <nav class="nav-container">
+                    <a href="./index.html" data-category="all" class="nav-item">All Games</a>
+                    <a href="./index.html?category=physics" data-category="physics" class="nav-item">Physics Games</a>
+                    <a href="./index.html?category=racing" data-category="racing" class="nav-item">Racing Games</a>
+                    <a href="./index.html?category=clicker" data-category="clicker" class="nav-item">Clicker Games</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 添加顶部间距以防止内容被固定导航栏遮挡 -->
+    <div class="h-16"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Breadcrumb Navigation -->
+        <nav class="flex mb-6" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <a href="/games" class="ml-1 text-sm font-medium text-gray-700 hover:text-primary md:ml-2">Games</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="ml-1 text-sm font-medium text-primary md:ml-2">Crazy Sheep 3D</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
+        <div class="flex gap-4 mb-6">
+            <span class="category-tag">Adventure</span>
+            <span class="category-tag">Physics-Based</span>
+            <span class="category-tag">3D Games</span>
+            <span class="category-tag">Platform</span>
+        </div>
+
+
+        <!-- Game Container -->
+        <section id="game" class="mb-8">
+            <h2 class="text-3xl font-display mb-6 text-primary">Play Crazy Sheep 3D</h2>
+            <div class="game-card rounded-xl overflow-hidden relative">
+                <iframe 
+                    src="https://www.crazygames.com/embed/crazy-sheep"
+                    class="w-full h-[600px] border-0"
+                    allow="fullscreen"
+                    title="Crazy Sheep 3D Game">
+                </iframe>
+            </div>
+        </section>
+
+        <section id="moreGames" class="container mx-auto px-4 mb-8">
+            <h2 class="text-3xl font-display mb-6 text-primary">More Games</h2>
+            <div class="game-grid">
+                <div class="game-card" data-category="physics battle-royale">
+                    <a href="./index.html" class="block">
+                        <img 
+                            src="./imgs/cheese-chompers-3d-512x512.png"
+                            data-game-title="Cheese Chompers 3D"
+                            alt="Cheese Chompers 3D" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                            onerror="handleImageError(this, this.dataset.gameTitle)"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Cheese Chompers 3D</h3>
+                            <p class="text-gray-600 mb-4">A physics-based battle royale game with crazy rats!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Physics</span>
+                                <span class="category-tag">Battle Royale</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="physics">
+                    <a href="./cheese-chompers-crazy-cattle.html" class="block">
+                        <img 
+                            src="./imgs/crazy-cattle-3d-gameplay.jpg"
+                            data-game-title="Crazy Cattle 3D"
+                            alt="Cheese Chompers Crazy Cattle" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                            onerror="handleImageError(this, this.dataset.gameTitle)"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Cheese Chompers - Crazy Cattle</h3>
+                            <p class="text-gray-600 mb-4">Control a crazy cattle through challenging obstacles!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Physics</span>
+                                <span class="category-tag">Adventure</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="racing">
+                    <a href="./cheese-chompers-tap-road.html" class="block">
+                        <img 
+                            src="./imgs/tap-road.jpg"
+                            data-game-title="Tap Road"
+                            alt="Cheese Chompers Tap Road" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                            onerror="handleImageError(this, this.dataset.gameTitle)"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Cheese Chompers Tap Road</h3>
+                            <p class="text-gray-600 mb-4">Race against time in this exciting tap road game!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Racing</span>
+                                <span class="category-tag">Action</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="physics">
+                    <a href="./cheese-chompers-crazy-sheep.html" class="block">
+                        <img 
+                            src="./imgs/crazy-sheep-3d-thumb.png"
+                            data-game-title="Crazy Sheep 3D"
+                            alt="Crazy Sheep 3D" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                            onerror="handleImageError(this, this.dataset.gameTitle)"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Crazy Sheep 3D</h3>
+                            <p class="text-gray-600 mb-4">An addictive physics game with sheep!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Physics</span>
+                                <span class="category-tag">Adventure</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="clicker">
+                    <a href="./cheese-chompers-curve-rush.html" class="block">
+                        <img 
+                            src="./imgs/curve-rush.jpg"
+                            data-game-title="Curve Rush"
+                            alt="Curve Rush" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                            onerror="handleImageError(this, this.dataset.gameTitle)"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Curve Rush</h3>
+                            <p class="text-gray-600 mb-4">Master the curves in this addictive clicker game!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Clicker</span>
+                                <span class="category-tag">Arcade</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Game Description -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-display text-primary mb-4">About The Game</h2>
+            <div class="game-card p-6 rounded-xl">
+                <p class="text-lg mb-4">Welcome to Cheese Chompers - Crazy Sheep 3D, where physics meets fun in an exciting adventure! Control a wacky sheep as you bounce, roll, and jump through challenging obstacles in this physics-based platformer.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Game Features</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span>Realistic physics engine for authentic movement and interactions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span>Multiple game modes including story, time trial, and challenge modes</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span>Progressive difficulty with increasingly challenging levels</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span>Customizable sheep character with unlockable skins and abilities</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-2">•</span>
+                                <span>Global leaderboards to compete with players worldwide</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Game Story</h3>
+                        <p class="mb-3">In a world where sheep have developed advanced technology, you play as a particularly adventurous sheep who discovers a mysterious portal. Your mission is to navigate through increasingly challenging environments, collecting power-ups and avoiding obstacles to reach the legendary "Golden Fleece" that promises unlimited power.</p>
+                        <p>Along the way, you'll encounter other quirky characters, solve physics-based puzzles, and unlock new abilities that help you progress through the game's increasingly complex levels.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rating Section -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-display text-primary mb-4">Player Ratings</h2>
+            <div class="game-card p-6 rounded-xl">
+                <div class="flex flex-col md:flex-row items-center justify-between mb-6">
+                    <div class="text-center md:text-left mb-4 md:mb-0">
+                        <div class="text-5xl font-bold text-primary">4.7</div>
+                        <div class="flex items-center justify-center md:justify-start mt-2">
+                            <div class="flex">
+                                <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                                <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                                <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                                <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                                <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                            </div>
+                            <span class="ml-2 text-gray-600">(856 ratings)</span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <span class="w-12 text-sm text-gray-600">5 stars</span>
+                                <div class="flex-1 h-2 mx-4 bg-gray-200 rounded-full">
+                                    <div class="h-2 bg-yellow-400 rounded-full" style="width: 75%"></div>
+                                </div>
+                                <span class="w-12 text-sm text-gray-600">75%</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-12 text-sm text-gray-600">4 stars</span>
+                                <div class="flex-1 h-2 mx-4 bg-gray-200 rounded-full">
+                                    <div class="h-2 bg-yellow-400 rounded-full" style="width: 15%"></div>
+                                </div>
+                                <span class="w-12 text-sm text-gray-600">15%</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-12 text-sm text-gray-600">3 stars</span>
+                                <div class="flex-1 h-2 mx-4 bg-gray-200 rounded-full">
+                                    <div class="h-2 bg-yellow-400 rounded-full" style="width: 5%"></div>
+                                </div>
+                                <span class="w-12 text-sm text-gray-600">5%</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-12 text-sm text-gray-600">2 stars</span>
+                                <div class="flex-1 h-2 mx-4 bg-gray-200 rounded-full">
+                                    <div class="h-2 bg-yellow-400 rounded-full" style="width: 3%"></div>
+                                </div>
+                                <span class="w-12 text-sm text-gray-600">3%</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-12 text-sm text-gray-600">1 star</span>
+                                <div class="flex-1 h-2 mx-4 bg-gray-200 rounded-full">
+                                    <div class="h-2 bg-yellow-400 rounded-full" style="width: 2%"></div>
+                                </div>
+                                <span class="w-12 text-sm text-gray-600">2%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <h3 class="text-xl font-semibold mb-3 text-primary">Recent Reviews</h3>
+                    <div class="space-y-4">
+                        <div class="border-b border-gray-200 pb-4">
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-yellow-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                </div>
+                                <span class="ml-2 font-medium">Sarah M.</span>
+                                <span class="ml-2 text-gray-500 text-sm">2 days ago</span>
+                            </div>
+                            <p class="text-gray-700">This game is absolutely hilarious! The physics are so much fun to play with, and I love how the sheep bounces around. The levels get progressively more challenging, which keeps me coming back for more.</p>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-yellow-400">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                </div>
+                                <span class="ml-2 font-medium">James T.</span>
+                                <span class="ml-2 text-gray-500 text-sm">1 week ago</span>
+                            </div>
+                            <p class="text-gray-700">The physics in this game are incredibly well done. I love how the sheep reacts to different surfaces and obstacles. The progression system is also great - each level introduces new mechanics that build on the previous ones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Play -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-display text-primary mb-4">How to Play</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-3 text-primary">Controls</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Use Arrow Keys or WASD to move the sheep</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Press Spacebar to jump</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Hold Spacebar for higher jumps</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Use Mouse to aim and shoot projectiles</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Press E to activate special abilities</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Press R to reset the level</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-3 text-primary">Objectives</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Complete each level by reaching the finish line</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Collect coins for points and power-ups</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Find hidden secrets and bonus areas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Unlock new abilities and character skins</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Compete for the fastest completion time</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Achieve three stars on each level</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6">
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-3 text-primary">Game Mechanics</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">Physics System</h4>
+                            <p class="text-gray-700">The game features a realistic physics engine that affects how your sheep moves, bounces, and interacts with the environment. Different surfaces have different friction and bounce properties.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Power-ups</h4>
+                            <p class="text-gray-700">Collect various power-ups throughout the game, including speed boosts, double jumps, shields, and special abilities that help you overcome obstacles.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Progression</h4>
+                            <p class="text-gray-700">As you complete levels, you'll unlock new abilities and character customizations. The difficulty increases gradually, introducing new mechanics and challenges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6">
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-3 text-primary">Tips & Tricks</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">For Beginners</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <span class="text-primary mr-2">•</span>
+                                    <span>Take your time to learn the basic controls</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-primary mr-2">•</span>
+                                    <span>Experiment with different jump heights</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-primary mr-2">•</span>
+                                    <span>Look for hidden paths and shortcuts</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-primary mr-2">•</span>
+                                    <span>Don't worry about speed runs until you're comfortable</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Advanced Techniques</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <span class="text-primary mr-2">•</span>
+                                    <span>Chain jumps for maximum height and distance</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-primary mr-2">•</span>
+                                    <span>Use momentum to your advantage</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-primary mr-2">•</span>
+                                    <span>Time your power-ups for maximum effect</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-primary mr-2">•</span>
+                                    <span>Learn to predict physics interactions</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-display text-primary mb-4">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-2">What makes Crazy Sheep 3D unique?</h3>
+                    <p class="text-gray-700">Crazy Sheep 3D combines physics-based gameplay with quirky humor and challenging obstacles. The game's unique mechanics and charming graphics make it stand out in the platformer genre. Unlike other platformers, the physics engine creates unpredictable and fun interactions that make each playthrough different.</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-2">Can I play on mobile devices?</h3>
+                    <p class="text-gray-700">Yes! Crazy Sheep 3D is fully optimized for both desktop and mobile devices. Touch controls are available for mobile players, with an intuitive interface that makes the game just as enjoyable on smaller screens. The game automatically adjusts its layout and controls based on your device.</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-2">Are there any special features?</h3>
+                    <p class="text-gray-700">The game includes power-ups, special abilities, and hidden secrets throughout each level. You can also compete with friends on the global leaderboard! Additionally, there are seasonal events, daily challenges, and a level editor where you can create and share your own levels with the community.</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-2">How many levels are there?</h3>
+                    <p class="text-gray-700">Crazy Sheep 3D features over 50 levels across 5 different worlds, each with its own unique theme and challenges. The game is regularly updated with new levels and content. Additionally, the community-created levels provide endless gameplay possibilities.</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-2">Is there a multiplayer mode?</h3>
+                    <p class="text-gray-700">While the main game is single-player, there is a competitive mode where you can race against ghost data from other players. We're also working on a multiplayer update that will allow you to play with friends in real-time cooperative and competitive modes.</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-2">How do I save my progress?</h3>
+                    <p class="text-gray-700">Your progress is automatically saved as you play. The game uses local storage to save your unlocked levels, achievements, and customizations. If you want to transfer your progress between devices, you can create an account to sync your data across platforms.</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-2">Are there any in-game purchases?</h3>
+                    <p class="text-gray-700">Crazy Sheep 3D is completely free to play with no required purchases. There are optional cosmetic items and shortcuts available for purchase, but they don't affect gameplay balance. All core content and features are available without spending any money.</p>
+                </div>
+                <div class="game-card p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-2">How often is the game updated?</h3>
+                    <p class="text-gray-700">We release regular updates with new levels, features, and bug fixes. Major content updates typically come every 2-3 months, with smaller patches and improvements more frequently. We also take community feedback seriously and often implement player suggestions.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p>&copy; 2025 Cheese Chompers Games. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

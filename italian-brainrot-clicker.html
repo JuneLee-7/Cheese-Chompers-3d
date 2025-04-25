@@ -9,27 +9,18 @@
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Italian Brainrot Clicker - Addictive Casual Game">
     <meta property="og:description" content="Click your way to success in this addictive Italian-themed casual game. Play free in your browser!">
-    <meta property="og:image" content="https://example.com/imgs/italian-brainrot-clicker-thumb.png">
-    <meta property="og:url" content="https://example.com/games/italian-brainrot-clicker">
+    <meta property="og:image" content="./imgs/italian-brainrot-clicker.jpg">
+    <meta property="og:url" content="./italian-brainrot-clicker.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Italian Brainrot Clicker - Addictive Casual Game">
     <meta name="twitter:description" content="Click your way to success in this addictive Italian-themed casual game. Play free in your browser!">
-    <meta name="twitter:image" content="https://example.com/imgs/italian-brainrot-clicker-thumb.png">
+    <meta name="twitter:image" content="./imgs/italian-brainrot-clicker.jpg">
     <link rel="canonical" href="https://example.com/games/italian-brainrot-clicker" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-28FKSNWMR5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-28FKSNWMR5');
-</script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -47,7 +38,7 @@
                     "name": "ClickMaster Studios",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://example.com/imgs/clickmaster-studios-logo.png",
+                        "url": "./imgs/cheese-chompers-logo.png",
                         "width": 180,
                         "height": 60
                     },
@@ -73,13 +64,13 @@
                 "datePublished": "2025-03-15",
                 "image": {
                     "@type": "ImageObject",
-                    "url": "https://example.com/imgs/italian-brainrot-clicker-thumb.png",
+                    "url": "./imgs/italian-brainrot-clicker.jpg",
                     "width": 1200,
                     "height": 630
                 },
                 "screenshot": {
                     "@type": "ImageObject",
-                    "url": "https://example.com/imgs/italian-brainrot-clicker-thumb.png",
+                    "url": "./imgs/italian-brainrot-clicker.jpg",
                     "width": 1920,
                     "height": 1080
                 },
@@ -446,19 +437,121 @@
         .rating-star.inactive {
             color: #E5E7EB;
         }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        .logo-text {
+            font-family: 'Righteous', cursive;
+            font-size: 1.5rem;
+            color: #FF9F43;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+        
+        /* 添加游戏网格样式 */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        
+        .game-grid .game-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+        
+        .game-grid .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-grid .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+        }
+        
+        .game-grid .game-card .p-4 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .game-grid .category-tag {
+            display: inline-block;
+            margin: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            background: #4ECDC4;
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .game-grid .category-tag:hover {
+            background: #45b8b0;
+            transform: scale(1.05);
+        }
+        
+        /* 添加默认图片样式 */
+        .default-game-img {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 200px;
+        }
     </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="./imgs/cheese-chompers-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./imgs/cheese-chompers-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./imgs/cheese-chompers-logo.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <meta name="theme-color" content="#FF9F43">
 </head>
 <body class="text-dark">
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <h1 class="text-4xl font-display text-primary float-animation">Cheese Chompers 3D</h1>
-                <nav class="nav-container flex-wrap justify-center md:justify-end">
-                    <a href="./index.html" class="nav-item">Home</a>
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="logo-container">
+                    <img src="./imgs/cheese-chompers-logo.png" alt="Cheese Chompers 3D Logo" class="logo-image">
+                    <span class="logo-text">Cheese Chompers 3D</span>
+                </a>
+                <nav class="nav-container">
+                    <a href="#" data-category="all" class="nav-item">All Games</a>
+                    <a href="#" data-category="physics" class="nav-item">Physics Games</a>
+                    <a href="#" data-category="racing" class="nav-item">Racing Games</a>
+                    <a href="#" data-category="clicker" class="nav-item">Clicker Games</a>
                 </nav>
             </div>
         </div>
     </header>
+
+    <!-- 添加顶部间距以防止内容被固定导航栏遮挡 -->
+    <div class="h-16"></div>
 
     <main class="container mx-auto px-4 py-8">
         <!-- 面包屑导航 -->
@@ -522,6 +615,116 @@
             </div>
         </section>
 
+        <section id="moreGames" class="container mx-auto px-4 mb-8">
+            <h2 class="text-3xl font-display mb-6 text-primary">More Games</h2>
+            <div class="game-grid">
+                <div class="game-card" data-category="physics battle-royale">
+                    <a href="./index.html" class="block">
+                        <img 
+                            src="./imgs/cheese-chompers-3d-512x512.png"
+                            data-game-title="Cheese Chompers 3D"
+                            alt="Cheese Chompers 3D" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                            onerror="handleImageError(this, this.dataset.gameTitle)"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Cheese Chompers 3D</h3>
+                            <p class="text-gray-600 mb-4">A physics-based battle royale game with crazy rats!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Physics</span>
+                                <span class="category-tag">Battle Royale</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="physics">
+                    <a href="./cheese-chompers-crazy-cattle.html" class="block">
+                        <img 
+                            src="./imgs/crazy-cattle-3d-gameplay.jpg"
+                            data-game-title="Crazy Cattle 3D"
+                            alt="Cheese Chompers Crazy Cattle" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                            onerror="handleImageError(this, this.dataset.gameTitle)"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Cheese Chompers - Crazy Cattle</h3>
+                            <p class="text-gray-600 mb-4">Control a crazy cattle through challenging obstacles!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Physics</span>
+                                <span class="category-tag">Adventure</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="racing">
+                    <a href="./cheese-chompers-tap-road.html" class="block">
+                        <img 
+                            src="./imgs/tap-road.jpg"
+                            data-game-title="Tap Road"
+                            alt="Cheese Chompers Tap Road" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                            onerror="handleImageError(this, this.dataset.gameTitle)"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Cheese Chompers Tap Road</h3>
+                            <p class="text-gray-600 mb-4">Race against time in this exciting tap road game!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Racing</span>
+                                <span class="category-tag">Action</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="physics">
+                    <a href="./cheese-chompers-crazy-sheep.html" class="block">
+                        <img 
+                            src="./imgs/crazy-sheep-3d-thumb.png"
+                            data-game-title="Crazy Sheep 3D"
+                            alt="Crazy Sheep 3D" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                            onerror="handleImageError(this, this.dataset.gameTitle)"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Crazy Sheep 3D</h3>
+                            <p class="text-gray-600 mb-4">An addictive physics game with sheep!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Physics</span>
+                                <span class="category-tag">Adventure</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="clicker">
+                    <a href="./cheese-chompers-curve-rush.html" class="block">
+                        <img 
+                            src="./imgs/curve-rush.jpg"
+                            data-game-title="Curve Rush"
+                            alt="Curve Rush" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                            onerror="handleImageError(this, this.dataset.gameTitle)"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Curve Rush</h3>
+                            <p class="text-gray-600 mb-4">Master the curves in this addictive clicker game!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Clicker</span>
+                                <span class="category-tag">Arcade</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- 游戏信息卡片 -->
         <section class="mb-8">
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -554,6 +757,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- 游戏介绍 -->
         <section class="game-card p-8 rounded-xl mb-8">
@@ -874,7 +1078,7 @@
         </section>
     </main>
 
-    <footer class="bg-dark text-white mt-16">
+    <footer class="bg-dark text-white mt-12">
         <div class="container mx-auto px-4 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="space-y-4">
@@ -999,6 +1203,88 @@
 
             document.querySelector('.rating-container').addEventListener('mouseleave', function() {
                 updateStars(userRating);
+            });
+        });
+    </script>
+
+    <script>
+        // 添加图片加载错误处理函数
+        function handleImageError(img, title) {
+            img.onerror = null; // 防止循环调用
+            img.classList.add('default-game-img');
+            img.style.backgroundColor = '#f0f0f0';
+            img.src = 'data:image/svg+xml,' + encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+                    <rect width="200" height="200" fill="#FF6B6B"/>
+                    <text x="50%" y="50%" fill="white" font-family="Arial" font-size="16" text-anchor="middle">
+                        ${title || 'Game Image'}
+                    </text>
+                </svg>
+            `);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 处理所有游戏图片
+            document.querySelectorAll('img[data-game-title]').forEach(img => {
+                img.onerror = () => handleImageError(img, img.dataset.gameTitle);
+            });
+
+            // 分类切换功能
+            const moreGamesSection = document.getElementById('moreGames');
+            const gameCards = moreGamesSection.querySelectorAll('.game-card');
+            
+            // 获取URL参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialCategory = urlParams.get('category') || 'all';
+
+            // 更新导航栏活动状态和游戏显示
+            function updateCategoryDisplay(category) {
+                // 更新导航栏状态
+                document.querySelectorAll('.nav-item').forEach(navItem => {
+                    if (navItem.dataset.category === category) {
+                        navItem.classList.add('active-category');
+                    } else {
+                        navItem.classList.remove('active-category');
+                    }
+                });
+
+                // 更新游戏卡片显示
+                gameCards.forEach(card => {
+                    const cardCategories = card.dataset.category.split(' ');
+                    if (category === 'all' || cardCategories.includes(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            // 初始化分类显示
+            updateCategoryDisplay(initialCategory);
+
+            // 添加导航项点击事件
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.dataset.category;
+                    
+                    // 更新URL参数但不刷新页面
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('category', category);
+                    window.history.pushState({category}, '', newUrl);
+                    
+                    // 更新显示
+                    updateCategoryDisplay(category);
+
+                    // 平滑滚动到游戏列表
+                    moreGamesSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // 处理浏览器前进/后退
+            window.addEventListener('popstate', function(event) {
+                const category = event.state?.category || 'all';
+                updateCategoryDisplay(category);
             });
         });
     </script>

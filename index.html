@@ -41,15 +41,6 @@
             }
         }
     </script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-28FKSNWMR5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-28FKSNWMR5');
-</script>
     <style>
         body {
             background-color: #FFF8E7;
@@ -71,7 +62,24 @@
             justify-content: flex-end;
             align-items: center;
             gap: 2rem;
-            padding: 1rem 0;
+            padding: 0;
+            height: 64px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .logo-image {
+            height: 48px;
+            width: auto;
+        }
+        .logo-text {
+            font-family: 'Righteous', cursive;
+            font-size: 1.5rem;
+            color: #FF6B6B;
+            white-space: nowrap;
         }
         .nav-item {
             position: relative;
@@ -147,20 +155,181 @@
         .float-animation {
             animation: float 3s ease-in-out infinite;
         }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        .active-category {
+            color: #FF7F00;
+            font-weight: 700;
+        }
+        .active-category::after {
+            width: 80%;
+            left: 10%;
+        }
+        /* 添加默认图片样式 */
+        .default-game-img {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .logo-text {
+                display: none;
+            }
+            .nav-container {
+                gap: 1rem;
+            }
+        }
     </style>
+    <script>
+        // 添加图片加载错误处理函数
+        function handleImageError(img, title) {
+            img.onerror = null; // 防止循环调用
+            img.classList.add('default-game-img');
+            img.style.backgroundColor = '#f0f0f0';
+            img.src = 'data:image/svg+xml,' + encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+                    <rect width="200" height="200" fill="#FF6B6B"/>
+                    <text x="50%" y="50%" fill="white" font-family="Arial" font-size="16" text-anchor="middle">
+                        ${title || 'Game Image'}
+                    </text>
+                </svg>
+            `);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 处理所有游戏图片
+            document.querySelectorAll('img[data-game-title]').forEach(img => {
+                img.onerror = () => handleImageError(img, img.dataset.gameTitle);
+            });
+
+            // 游戏相关功能
+            const gameContainer = document.getElementById('gameContainer');
+            const gameThumbnail = document.getElementById('gameThumbnail');
+            const gameFrame = document.getElementById('gameFrame');
+            const playButton = document.getElementById('playButton');
+            const fullscreenButton = document.getElementById('fullscreenButton');
+            let gameStarted = false;
+
+            // Play button click handler
+            playButton?.addEventListener('click', function() {
+                if (!gameStarted) {
+                    gameStarted = true;
+                    gameFrame.src = gameFrame.dataset.src;
+                    gameFrame.classList.remove('hidden');
+                    gameThumbnail.classList.add('hidden');
+                    fullscreenButton.classList.remove('hidden');
+                }
+            });
+
+            // Fullscreen button click handler
+            fullscreenButton?.addEventListener('click', function() {
+                if (!document.fullscreenElement) {
+                    if (gameContainer.requestFullscreen) {
+                        gameContainer.requestFullscreen();
+                    } else if (gameContainer.webkitRequestFullscreen) {
+                        gameContainer.webkitRequestFullscreen();
+                    } else if (gameContainer.msRequestFullscreen) {
+                        gameContainer.msRequestFullscreen();
+                    }
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                }
+            });
+
+            // 分类切换功能
+            const moreGamesSection = document.getElementById('moreGames');
+            const gameCards = moreGamesSection.querySelectorAll('.game-card');
+            
+            // 获取URL参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialCategory = urlParams.get('category') || 'all';
+
+            // 更新导航栏活动状态和游戏显示
+            function updateCategoryDisplay(category) {
+                // 更新导航栏状态
+                document.querySelectorAll('.nav-item').forEach(navItem => {
+                    if (navItem.dataset.category === category) {
+                        navItem.classList.add('active-category');
+                    } else {
+                        navItem.classList.remove('active-category');
+                    }
+                });
+
+                // 更新游戏卡片显示
+                gameCards.forEach(card => {
+                    const cardCategories = card.dataset.category.split(' ');
+                    if (category === 'all' || cardCategories.includes(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            // 初始化分类显示
+            updateCategoryDisplay(initialCategory);
+
+            // 添加导航项点击事件
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.dataset.category;
+                    
+                    // 更新URL参数但不刷新页面
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('category', category);
+                    window.history.pushState({category}, '', newUrl);
+                    
+                    // 更新显示
+                    updateCategoryDisplay(category);
+
+                    // 平滑滚动到游戏列表
+                    moreGamesSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // 处理浏览器前进/后退
+            window.addEventListener('popstate', function(event) {
+                const category = event.state?.category || 'all';
+                updateCategoryDisplay(category);
+            });
+        });
+    </script>
 </head>
 <body class="text-dark">
-    <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-4xl font-display text-primary float-animation">Cheese Chompers 3D</h1>
-                <nav class="nav-container flex-wrap justify-center md:justify-end">
-                    <a href="./index.html" class="nav-item">Home</a>
-                    <a href="./italian-brainrot-clicker.html" class="nav-item">Italian Brainrot Clicker</a>
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="logo-container">
+                    <img src="./imgs/cheese-chompers-logo.png" alt="Cheese Chompers 3D Logo" class="logo-image">
+                    <span class="logo-text">Cheese Chompers 3D</span>
+                </a>
+                <nav class="nav-container">
+                    <a href="#" data-category="all" class="nav-item">All Games</a>
+                    <a href="#" data-category="physics" class="nav-item">Physics Games</a>
+                    <a href="#" data-category="racing" class="nav-item">Racing Games</a>
+                    <a href="#" data-category="clicker" class="nav-item">Clicker Games</a>
                 </nav>
             </div>
         </div>
     </header>
+
+    <!-- 添加顶部间距以防止内容被固定导航栏遮挡 -->
+    <div class="h-16"></div>
 
     <main class="container mx-auto px-4 py-8">
         <!-- 添加面包屑导航 -->
@@ -211,10 +380,10 @@
         <section id="game" class="mb-8">
             <h2 class="text-3xl font-display mb-6 text-primary">Play Cheese Chompers 3D</h2>
             <div class="game-card rounded-xl overflow-hidden relative" id="gameContainer">
-                <!-- Game thumbnail and play button -->
                 <div id="gameThumbnail" class="relative">
                     <img 
-                        src="imgs/cheese-chompers-3d-512x512.png" 
+                        src="./imgs/cheese-chompers-3d-512x512.png"
+                        data-game-title="Cheese Chompers 3D"
                         alt="Cheese Chompers 3D Thumbnail" 
                         class="w-full h-[600px] object-cover object-center"
                         loading="lazy"
@@ -230,7 +399,6 @@
                         <span class="font-semibold text-lg">Play Game</span>
                     </button>
                 </div>
-                <!-- Game iframe (hidden initially) -->
                 <iframe 
                     id="gameFrame"
                     src="about:blank"
@@ -239,7 +407,6 @@
                     allow="fullscreen"
                     title="Cheese Chompers 3D Game">
                 </iframe>
-                <!-- Fullscreen button (hidden initially) -->
                 <button 
                     id="fullscreenButton"
                     class="hidden absolute bottom-4 right-4 bg-dark/80 text-white p-2 rounded-lg hover:bg-dark transition-all"
@@ -249,6 +416,100 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/>
                     </svg>
                 </button>
+            </div>
+        </section>
+
+        <section class="mb-8" id="moreGames">
+            <h2 class="text-3xl font-display mb-6 text-primary">More Games</h2>
+            <div class="game-grid">
+                <div class="game-card" data-category="physics battle-royale">
+                    <a href="./cheese-chompers-crazy-cattle.html" class="block">
+                        <img 
+                            src="./imgs/crazy-cattle-3d-gameplay.jpg"
+                            data-game-title="Crazy Cattle"
+                            alt="Cheese Chompers Crazy Cattle" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Cheese Chompers Crazy Cattle</h3>
+                            <p class="text-gray-600 mb-4">A physics-based battle royale game with crazy cattle!</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="category-tag">Physics</span>
+                                <span class="category-tag">Battle Royale</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="racing">
+                    <a href="./cheese-chompers-tap-road.html" class="block">
+                        <img 
+                            src="./imgs/tap-road.jpg"
+                            data-game-title="Tap Road"
+                            alt="Cheese Chompers Tap Road" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Cheese Chompers Tap Road</h3>
+                            <p class="text-gray-600 mb-4">Race against time in this exciting tap road game!</p>
+                            <span class="category-tag">Racing</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="clicker">
+                    <a href="./italian-brainrot-clicker.html" class="block">
+                        <img 
+                            src="./imgs/italian-brainrot-clicker.jpg"
+                            data-game-title="Brainrot Clicker"
+                            alt="Italian Brainrot Clicker" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Italian Brainrot Clicker</h3>
+                            <p class="text-gray-600 mb-4">An addictive clicker game with Italian theme!</p>
+                            <span class="category-tag">Clicker</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="game-card" data-category="physics">
+                    <a href="./cheese-chompers-crazy-sheep.html" class="block">
+                        <img 
+                            src="./imgs/crazy-sheep-3d-thumb.png"
+                            data-game-title="crazy sheep 3D"
+                            alt="Crazy Sheep 3D" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">crazy sheep 3D</h3>
+                            <p class="text-gray-600 mb-4">An addictive physics game with sheep!</p>
+                            <span class="category-tag">physics</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="game-card" data-category="clicker">
+                    <a href="./cheese-chompers-curve-rush.html" class="block">
+                        <img 
+                            src="./imgs/curve-rush.jpg"
+                            data-game-title="Curve Rush"
+                            alt="Curve Rush" 
+                            class="w-full h-48 object-cover rounded-t-lg" 
+                            loading="lazy"
+                        >
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Curve Rush</h3>
+                            <p class="text-gray-600 mb-4">An addictive physics game with sheep!</p>
+                            <span class="category-tag">clicker</span>
+                        </div>
+                    </a>
+                </div>
+
             </div>
         </section>
 
@@ -280,7 +541,8 @@
                     <div class="md:w-1/3">
                         <div class="game-card overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
                             <img 
-                                src="imgs/cheese-chompers-3d-512x512.png" 
+                                src="./imgs/cheese-chompers-3d-game-m300x172.webp"
+                                data-game-title="Cheese Chompers 3D"
                                 alt="Cheese Chompers 3D Gameplay" 
                                 class="w-full h-auto rounded-lg"
                                 loading="lazy"
@@ -844,116 +1106,6 @@
             }
         ]
     }
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const stars = document.querySelectorAll('.rating-star');
-            const ratingMessage = document.getElementById('rating-message');
-            const currentRating = document.getElementById('current-rating');
-            let userRating = 5; // 默认5星
-
-            const ratingMessages = {
-                1: "Poor",
-                2: "Fair",
-                3: "Good",
-                4: "Very Good",
-                5: "Excellent!"
-            };
-
-            function updateStars(rating) {
-                stars.forEach((star, index) => {
-                    if (index < rating) {
-                        star.classList.add('text-yellow-400');
-                        star.classList.remove('text-gray-400');
-                    } else {
-                        star.classList.remove('text-yellow-400');
-                        star.classList.add('text-gray-400');
-                    }
-                });
-                currentRating.textContent = rating;
-                ratingMessage.textContent = ratingMessages[rating] || "Rate this game";
-            }
-
-            // 初始化显示5星
-            updateStars(5);
-
-            stars.forEach(star => {
-                star.addEventListener('mouseover', function() {
-                    const rating = this.dataset.rating;
-                    updateStars(rating);
-                });
-
-                star.addEventListener('click', function() {
-                    const rating = this.dataset.rating;
-                    userRating = rating;
-                    updateStars(rating);
-                    ratingMessage.textContent = "Thanks for rating!";
-                    
-                    // 这里可以添加发送评分到服务器的代码
-                    console.log('Rating submitted:', rating);
-                });
-            });
-
-            // 鼠标移出评分区域时恢复用户选择的评分
-            document.querySelector('.rating-container').addEventListener('mouseleave', function() {
-                updateStars(userRating);
-                ratingMessage.textContent = userRating ? "Thanks for rating!" : "Click to rate!";
-            });
-
-            const gameContainer = document.getElementById('gameContainer');
-            const gameThumbnail = document.getElementById('gameThumbnail');
-            const gameFrame = document.getElementById('gameFrame');
-            const playButton = document.getElementById('playButton');
-            const fullscreenButton = document.getElementById('fullscreenButton');
-
-            // Play button click handler
-            playButton.addEventListener('click', function() {
-                // Load the game
-                gameFrame.src = gameFrame.dataset.src;
-                gameFrame.classList.remove('hidden');
-                gameThumbnail.classList.add('hidden');
-                fullscreenButton.classList.remove('hidden');
-            });
-
-            // Fullscreen button click handler
-            fullscreenButton.addEventListener('click', function() {
-                if (!document.fullscreenElement) {
-                    if (gameContainer.requestFullscreen) {
-                        gameContainer.requestFullscreen();
-                    } else if (gameContainer.webkitRequestFullscreen) {
-                        gameContainer.webkitRequestFullscreen();
-                    } else if (gameContainer.msRequestFullscreen) {
-                        gameContainer.msRequestFullscreen();
-                    }
-                } else {
-                    if (document.exitFullscreen) {
-                        document.exitFullscreen();
-                    } else if (document.webkitExitFullscreen) {
-                        document.webkitExitFullscreen();
-                    } else if (document.msExitFullscreen) {
-                        document.msExitFullscreen();
-                    }
-                }
-            });
-
-            // Update fullscreen button icon on fullscreen change
-            document.addEventListener('fullscreenchange', updateFullscreenButton);
-            document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
-            document.addEventListener('mozfullscreenchange', updateFullscreenButton);
-            document.addEventListener('MSFullscreenChange', updateFullscreenButton);
-
-            function updateFullscreenButton() {
-                const isFullscreen = document.fullscreenElement || 
-                    document.webkitFullscreenElement || 
-                    document.mozFullScreenElement || 
-                    document.msFullscreenElement;
-
-                fullscreenButton.innerHTML = isFullscreen ? 
-                    '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>' :
-                    '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/></svg>';
-            }
-        });
     </script>
 
     <script type="application/ld+json">
